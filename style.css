@@ -149,3 +149,72 @@ body {
         transform: rotateY(360deg);
     }
 }
+
+/* =========================================
+   ESTILOS DEL BOTTOM NAV (APP MOBILE HORIZONTAL)
+========================================= */
+
+body {
+    /* Le damos espacio abajo a la página para que la barra no tape nada */
+    padding-bottom: 70px; 
+}
+
+/* 1. EL CONTENEDOR PRINCIPAL (La barra) */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Obliga a la barra a estirarse de orilla a orilla */
+    background-color: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    
+    /* MAGIA FLEXBOX: Esto obliga a los iconos a ponerse en horizontal */
+    display: flex; 
+    flex-direction: row; /* Fuerza la fila horizontal */
+    justify-content: space-around; /* Reparte el espacio sobrante por igual */
+    align-items: center; /* Los centra verticalmente */
+    
+    padding: 10px 0;
+    z-index: 1000; 
+}
+
+/* 2. CADA BOTÓN (Icono + Texto) */
+.nav-item {
+    display: flex;
+    flex-direction: column; /* Pone el icono arriba y el texto abajo */
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Hace que cada botón mida exactamente lo mismo de ancho */
+    text-decoration: none;
+    color: #9ca3af;
+    font-size: 12px;
+    transition: color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 3. TAMAÑO DE LOS ÍCONOS */
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease;
+}
+
+/* 4. ESTADO ACTIVO (Cuando lo tocas) */
+.nav-item.active {
+    color: #2563eb; 
+}
+
+.nav-item.active svg {
+    transform: scale(1.1); 
+}
+
+/* 5. RESPONSIVE (Ocultar en PC si solo lo quieres en celular) */
+@media (min-width: 768px) {
+    .bottom-nav {
+        display: none;
+    }
+    body {
+        padding-bottom: 0; 
+    }
+}

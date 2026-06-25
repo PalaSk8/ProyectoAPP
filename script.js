@@ -22,3 +22,22 @@ imageUrls.forEach((url, indice) => {
 
     img.style.transform = `rotateY(${angle}deg) translateZ(300px)`;
     contenedorAnillos.appendChild(img);});
+
+
+    
+// 1. Seleccionamos todos los botones de la barra de navegación
+const navItems = document.querySelectorAll('.nav-item');
+
+// 2. Le decimos a cada botón que esté atento a cuando le den "click" (o tap en celular)
+navItems.forEach(item => {
+  item.addEventListener('click', function(evento) {
+    // Evitamos que la página se recargue (esto es solo para esta prueba visual)
+    evento.preventDefault(); 
+    
+    // 3. Primero, le quitamos la clase "active" a TODOS los botones
+    navItems.forEach(nav => nav.classList.remove('active'));
+    
+    // 4. Luego, le agregamos la clase "active" SOLAMENTE al botón que acabas de tocar
+    this.classList.add('active');
+  });
+});
