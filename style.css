@@ -1,0 +1,51 @@
+/*1. estilo base: Aplica móviles*/
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+
+/*el contenedor padre movil*/
+.container-principal{
+    display: flex;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px;
+}
+
+.tarjeta {
+    width: 100%;/* Ajusta el ancho al 100% del contenedor */
+    height: 100%;/* Ajusta la altura al 100% del contenedor */
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 20px;
+}
+
+/*2. estilo para tabletas: Aplica a pantallas con un ancho mínimo de 768px*/
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+.tarjeta {
+    width: 80%; /* Ajusta el ancho al 80% del contenedor */
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
+    padding: 2rem;
+    margin-bottom: 30px;
+}
+
+/*3. estilo para computadoras de escritorio: Aplica a pantallas con un ancho mínimo de 1024px*/
+@media (min-width: 1024px) {
+    body {
+        width: 31%; /* Ajusta el ancho al a tres tarjetas por fila del contenedor */
+        margin: 0 auto; /* Centra el contenido horizontalmente */
+        font-size: 1rem;/* Ajusta el tamaño de fuente para pantallas más grandes */
+    }
+}
