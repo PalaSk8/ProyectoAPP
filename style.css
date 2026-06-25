@@ -87,9 +87,9 @@ body {
 /* Variables para móviles (Pantallas menores a 768px) */
 @media (max-width: 768px) {
   :root {
-    --radio-anillo: 160px; 
-    --ancho-img: 100px;    
-    --alto-img: 150px;
+    --radio-anillo: 250px; 
+    --ancho-img: 150px;    
+    --alto-img: 300px;
   }
 }
 
@@ -101,8 +101,14 @@ body {
     width: 100%;
     overflow: hidden; /* Evita que se vea el contenido que sobresale del contenedor */
     padding: 40px 0; /* Espaciado superior e inferior */
+    cursor: grab; /* Cambia el cursor para indicar que se puede arrastrar */
+
 }
 
+/*cuando el usuario este arrastrando cerrramos la manita*/
+.contenedor-galeria:active {
+    cursor: grabbing;
+}
 /*a la escen le quitanmos el margin pq el contenedor ya lo centra*/
 
 .escena {
@@ -118,15 +124,10 @@ body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    /* CORRECCIÓN: El nombre ya coincide con el @keyframes */
-    animation: girarAnillo 20s linear infinite;
+    
 }
 
-/* Pausar al pasar el mouse o tocar el celular */
-.anillo:hover {
-    animation-play-state: paused;
-    cursor: pointer;
-}
+
 
 /* Estilos de las imágenes */
 .anillo img {
@@ -138,16 +139,14 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     user-select: none;
     -webkit-user-drag: none;
+    /* transición suave cuando se oscurecen*/
+    transition: filter 0.3s ease;
 }
 
 /* Animación */
-@keyframes girarAnillo {
-    from {
-        transform: rotateY(0deg);
-    }
-    to {
-        transform: rotateY(360deg);
-    }
+.anillo img.atenuada {
+    filter: brightness(0.5);
+    opacity: 0.3;
 }
 
 /* =========================================
