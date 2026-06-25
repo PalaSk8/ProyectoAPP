@@ -100,7 +100,7 @@ body {
     align-items:center;
     width: 100%;
     overflow: hidden; /* Evita que se vea el contenido que sobresale del contenedor */
-    padding: 40px 0; /* Espaciado superior e inferior */
+    padding: 70px 0; /* Espaciado superior e inferior */
     cursor: grab; /* Cambia el cursor para indicar que se puede arrastrar */
 
 }
