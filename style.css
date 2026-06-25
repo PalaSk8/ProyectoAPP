@@ -1,51 +1,151 @@
-/*1. estilo base: Aplica móviles*/
+/*selector universal body*/
+* {
+    box-sizing: border-box;
+}
+
+/* =========================================
+   1. ESTILOS BASE Y MÓVILES
+========================================= */
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 14px;
     margin: 0;
     padding: 20px;
     background-color: #f9f9f9;
+    /* Evitamos el scroll horizontal en caso de que el 3D se asome */
+    overflow-x: hidden; 
 }
 
-
-/*el contenedor padre movil*/
-.container-principal{
+/* El contenedor padre móvil */
+.container-principal {
     display: flex;
-    flex-direction: column; /* Cambia la dirección de los elementos a columna */
-    align-items: center; /* Centra los elementos horizontalmente */
-    justify-content: center; /* Centra los elementos verticalmente */
-    gap: 20px; /* Espacio entre las tarjetas */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     padding: 20px;
+    max-width: 1200px;/*limite de ancho para escritorio*/
+    margin: 0 auto;/*centrado horizontal*/
 }
 
 .tarjeta {
-    width: 100%;/* Ajusta el ancho al 100% del contenedor */
-    height: 100%;/* Ajusta la altura al 100% del contenedor */
+    width: 100%;
+    height: 100%;
     background-color: #f2f2f2;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     margin-bottom: 20px;
+    box-sizing: border-box; /* Añadido de Senior para que el padding no rompa el ancho */
 }
 
-/*2. estilo para tabletas: Aplica a pantallas con un ancho mínimo de 768px*/
+
+/* =========================================
+   2. MEDIA QUERIES (TABLETS Y ESCRITORIO)
+========================================= */
+
+/* Tabletas: Ancho mínimo de 768px */
 @media (min-width: 768px) {
     body {
         font-size: 16px;
     }
-}
-.tarjeta {
-    width: 80%; /* Ajusta el ancho al 80% del contenedor */
-    height: auto; /* Ajusta la altura automáticamente según el contenido */
-    padding: 2rem;
-    margin-bottom: 30px;
+    .tarjeta {
+        width: 80%; 
+        height: auto; 
+        padding: 2rem;
+        margin-bottom: 30px;
+    }
 }
 
-/*3. estilo para computadoras de escritorio: Aplica a pantallas con un ancho mínimo de 1024px*/
+/* Escritorio: Ancho mínimo de 1024px */
 @media (min-width: 1024px) {
     body {
-        width: 31%; /* Ajusta el ancho al a tres tarjetas por fila del contenedor */
-        margin: 0 auto; /* Centra el contenido horizontalmente */
-        font-size: 1rem;/* Ajusta el tamaño de fuente para pantallas más grandes */
+        font-size: 1rem;
+    }
+    .container-principal {
+        flex-direction: row; /* Para que las tarjetas se pongan lado a lado */
+        flex-wrap: wrap;     /* Permite que bajen a otra línea si no caben */
+    }
+    .tarjeta {
+        width: 30%; /* Aquí es donde va el 30% para tener 3 tarjetas por fila */
+        margin: 0;  
+    }
+}
+
+
+/* =========================================
+   3. ESTILOS DE LA GALERÍA 3D
+========================================= */
+
+/* Variables de tamaño general (Escritorio) */
+:root {
+  --radio-anillo: 350px;
+  --ancho-img: 200px;
+  --alto-img: 300px;
+}
+
+/* Variables para móviles (Pantallas menores a 768px) */
+@media (max-width: 768px) {
+  :root {
+    --radio-anillo: 160px; 
+    --ancho-img: 100px;    
+    --alto-img: 150px;
+  }
+}
+
+/*hacemos que el galeria este exactamente al centro de la pantalla*/
+.contenedor-galeria {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    overflow: hidden; /* Evita que se vea el contenido que sobresale del contenedor */
+    padding: 40px 0; /* Espaciado superior e inferior */
+}
+
+/*a la escen le quitanmos el margin pq el contenedor ya lo centra*/
+
+.escena {
+    width: var(--ancho-img);
+    height: var(--alto-img);
+    perspective: 1200px;
+    
+}
+
+/* Estilos del anillo */
+.anillo {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    /* CORRECCIÓN: El nombre ya coincide con el @keyframes */
+    animation: girarAnillo 20s linear infinite;
+}
+
+/* Pausar al pasar el mouse o tocar el celular */
+.anillo:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+/* Estilos de las imágenes */
+.anillo img {
+    position: absolute;
+    width: var(--ancho-img);
+    height: var(--alto-img);
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Animación */
+@keyframes girarAnillo {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
     }
 }
