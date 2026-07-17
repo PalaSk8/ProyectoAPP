@@ -10,10 +10,29 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 14px;
     margin: 0;
-    padding: 20px;
+    /* contenido despues del header */
+    padding: 90px 0 70px 0;
     background-color: #f9f9f9;
     /* Evitamos el scroll horizontal en caso de que el 3D se asome */
     overflow-x: hidden; 
+
+     /* imagen de fondo */
+    background-image:url("img/image.png");
+    background-size:cover;        /* llena toda la pantalla */
+    background-position:center;   /* centra la imagen */
+    background-attachment:fixed;  
+}
+
+/* capa superpuesta para el efecto de transparencia */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.8); /* transparencia” */
+    z-index:-1;
 }
 
 /* El contenedor padre móvil */
@@ -27,18 +46,6 @@ body {
     max-width: 1200px;/*limite de ancho para escritorio*/
     margin: 0 auto;/*centrado horizontal*/
 }
-
-.tarjeta {
-    width: 100%;
-    height: 100%;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    margin-bottom: 20px;
-    box-sizing: border-box; /* Añadido de Senior para que el padding no rompa el ancho */
-}
-
 
 /* =========================================
    2. MEDIA QUERIES (TABLETS Y ESCRITORIO)
@@ -72,52 +79,6 @@ body {
     }
 }
 
-
-/* =========================================
-   3. ESTILOS DE LA GALERÍA 3D
-========================================= */
-
-/* Variables de tamaño general (Escritorio) */
-:root {
-  --radio-anillo: 350px;
-  --ancho-img: 200px;
-  --alto-img: 300px;
-}
-
-/* Variables para móviles (Pantallas menores a 768px) */
-@media (max-width: 768px) {
-  :root {
-    --radio-anillo: 250px; 
-    --ancho-img: 150px;    
-    --alto-img: 300px;
-  }
-}
-
-/*hacemos que el galeria este exactamente al centro de la pantalla*/
-.contenedor-galeria {
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    width: 100%;
-    overflow: hidden; /* Evita que se vea el contenido que sobresale del contenedor */
-    padding: 70px 0; /* Espaciado superior e inferior */
-    cursor: grab; /* Cambia el cursor para indicar que se puede arrastrar */
-
-}
-
-/*cuando el usuario este arrastrando cerrramos la manita*/
-.contenedor-galeria:active {
-    cursor: grabbing;
-}
-/*a la escen le quitanmos el margin pq el contenedor ya lo centra*/
-
-.escena {
-    width: var(--ancho-img);
-    height: var(--alto-img);
-    perspective: 1200px;
-    
-}
-
 /* Estilos del anillo */
 .anillo {
     width: 100%;
@@ -126,37 +87,7 @@ body {
     transform-style: preserve-3d;
     
 }
-
-
-
-/* Estilos de las imágenes */
-.anillo img {
-    position: absolute;
-    width: var(--ancho-img);
-    height: var(--alto-img);
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-    user-select: none;
-    -webkit-user-drag: none;
-    /* transición suave cuando se oscurecen*/
-    transition: filter 0.3s ease;
-}
-
-/* Animación */
-.anillo img.atenuada {
-    filter: brightness(0.5);
-    opacity: 0.3;
-}
-
 /* =========================================
-   ESTILOS DEL BOTTOM NAV (APP MOBILE HORIZONTAL)
-========================================= */
-
-body {
-    /* Le damos espacio abajo a la página para que la barra no tape nada */
-    padding-bottom: 70px; 
-}
 
 /* 1. EL CONTENEDOR PRINCIPAL (La barra) */
 .bottom-nav {
@@ -164,8 +95,9 @@ body {
     bottom: 0;
     left: 0;
     width: 100%; /* Obliga a la barra a estirarse de orilla a orilla */
-    background-color: #ffffff;
+    background-color: #0b7a53;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px 12px 0 0; /* Bordes redondeados en la parte superior */
     
     /* MAGIA FLEXBOX: Esto obliga a los iconos a ponerse en horizontal */
     display: flex; 
@@ -185,7 +117,7 @@ body {
     justify-content: center;
     flex: 1; /* Hace que cada botón mida exactamente lo mismo de ancho */
     text-decoration: none;
-    color: #9ca3af;
+    color: #f3f5f8;
     font-size: 12px;
     transition: color 0.3s ease;
     -webkit-tap-highlight-color: transparent;
@@ -201,12 +133,10 @@ body {
 
 /* 4. ESTADO ACTIVO (Cuando lo tocas) */
 .nav-item.active {
-    color: #2563eb; 
+    color: #18181a; 
 }
 
-.nav-item.active svg {
-    transform: scale(1.1); 
-}
+
 
 /* 5. RESPONSIVE (Ocultar en PC si solo lo quieres en celular) */
 @media (min-width: 768px) {
@@ -216,4 +146,296 @@ body {
     body {
         padding-bottom: 0; 
     }
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.header{
+    background:#0b7a53;
+    color:#fff;
+    height:90px;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    /* para que el header se mantenga fijo en la parte superior */
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    border-radius: 0 0 12px 12px; /* Bordes redondeados en la parte superior */
+}
+
+/* Flecha */
+
+.header i{
+    font-size:22px;
+    cursor:pointer;
+    z-index:2;
+}
+
+.header a{
+    left: -58px;
+}
+
+/* Logo centrado */
+
+.logo{
+    position:absolute;
+    left:40%;
+    transform:translateX(-50%);
+}
+
+.logo img{
+    width:140px;
+    height:auto;
+    display:block;
+}
+
+
+/* ==========================
+   LOGIN
+========================== */
+
+.logincontenedor{
+    width:100%;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+}
+
+
+.login{
+    width:100%;
+    max-width:380px;
+    padding:30px 20px;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+    text-align:center;
+}
+
+
+.login h2{
+    color:#0b7a53;
+    margin-bottom:5px;
+    font-size:24px;
+}
+
+
+.login p{
+    color:#0b7a53;
+    margin-bottom:25px;
+    font-size:15px;
+}
+
+
+/* cajas usuario y contraseña */
+
+.cajas{
+    display:flex;
+    align-items:center;
+    background:#f1f1f1;
+    border-radius:12px;
+    padding:12px 15px;
+    margin-bottom:15px;
+    border:2px solid #171616;
+}
+
+
+.cajas i{
+    color:#528f7a;
+    margin-right:10px;
+}
+
+
+.cajas input{
+    border:none;
+    outline:none;
+    background:none;
+    width:100%;
+    font-size:12px;
+}
+
+/* pequeña animacion cuando el input está seleccionado */
+.cajas{
+    transition: all .3s;
+}
+
+.cajas:focus-within{
+    border-color:#0b7a53;
+    box-shadow:0 5px 15px rgba(11,122,83,.25);
+    transform:translateY(-3px);
+}
+
+
+/* botón INICIAR SESIÓN */
+
+.login button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    background:#ff3131;
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+    margin-top:25px;
+    cursor:pointer;
+}
+
+
+/* crear cuenta / olvidar contraseña / continuar sin registro */
+
+.opciones{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+}
+
+
+.recuperar{
+    color:#0b7a53;
+    font-size:12px;
+}
+
+
+.sin-registro{
+    display:inline-block;
+    margin-top:20px;
+    color:#0b7a53;
+    font-size:14px;
+}
+
+/*imagen flechibus*/
+.fbus{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.fbus img{
+    width:90%;
+    max-width:200px;
+    height:auto;
+    animation:subir .8s ease;
+}
+
+@keyframes subir{
+
+    0%{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    70%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/*=========================================================
+                PÁGINA CREAR CUENTA
+=========================================================*/
+
+/* Contenedor principal de la página */
+.contenedor-crearcuenta{
+
+    width:100%;
+    display:flex;
+    justify-content:center;
+    padding:10px;
+    margin-top:-20px;
+
+}
+
+/* Tarjeta donde se encuentra el formulario */
+
+.crearcuenta{
+
+    width:100%;
+    max-width:400px;
+    padding:10px 25px 25px 25px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+
+}
+
+/* Título principal */
+
+h2{
+
+    text-align:center;
+    color:#0b7a53;
+    margin-top:10px;
+
+}
+
+/* Subtítulos de cada sección */
+
+.crearcuenta h3{
+
+    color:#0b7a53;
+    margin-bottom:5px;
+    font-size:15px;
+
+}
+.cajas input{
+    font-size: 10px;
+}
+
+/*==============================
+        CHECKBOXES
+===============================*/
+
+/* Espaciado entre cada opción */
+
+.opcion-check{
+    font-size:11px;
+
+}
+
+
+/* Alineación del texto con el checkbox */
+
+.opcion-check label{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+}
+
+/* Tamaño del checkbox */
+
+.opcion-check input{
+
+    width:15px;
+    height:15px;
+
+}
+
+/*==============================
+            BOTÓN
+===============================*/
+
+.crearcuenta button{
+
+    width:100%;
+    margin-top:8px;
+    padding:8px;
+    border:none;
+    border-radius:10px;
+    background:#ff3131;
+    color:#fff;
+    font-size:13px;
+    font-weight:bold;
+
 }
