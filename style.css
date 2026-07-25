@@ -52,42 +52,26 @@ body::before{
 ========================================= */
 
 /* Tabletas: Ancho mínimo de 768px */
-@media (min-width: 768px) {
-    body {
-        font-size: 16px;
+/* ===== TABLET ===== */
+@media (min-width:768px){
+
+    .login{
+        max-width:550px;
+        padding:40px;
     }
-    .tarjeta {
-        width: 80%; 
-        height: auto; 
-        padding: 2rem;
-        margin-bottom: 30px;
+
+    .crearcuenta{
+        max-width:550px;
+        padding:40px;
     }
+
+    .promos{
+        max-width:550px;
+        padding:40px;
+    }
+
 }
 
-/* Escritorio: Ancho mínimo de 1024px */
-@media (min-width: 1024px) {
-    body {
-        font-size: 1rem;
-    }
-    .container-principal {
-        flex-direction: row; /* Para que las tarjetas se pongan lado a lado */
-        flex-wrap: wrap;     /* Permite que bajen a otra línea si no caben */
-    }
-    .tarjeta {
-        width: 30%; /* Aquí es donde va el 30% para tener 3 tarjetas por fila */
-        margin: 0;  
-    }
-}
-
-/* Estilos del anillo */
-.anillo {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    
-}
-/* =========================================
 
 /* 1. EL CONTENEDOR PRINCIPAL (La barra) */
 .bottom-nav {
@@ -112,7 +96,7 @@ body::before{
 /* 2. CADA BOTÓN (Icono + Texto) */
 .nav-item {
     display: flex;
-    flex-direction: column; /* Pone el icono arriba y el texto abajo */
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
     flex: 1; /* Hace que cada botón mida exactamente lo mismo de ancho */
@@ -139,12 +123,13 @@ body::before{
 
 
 /* 5. RESPONSIVE (Ocultar en PC si solo lo quieres en celular) */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .bottom-nav {
         display: none;
     }
+
     body {
-        padding-bottom: 0; 
+        padding-bottom: 0;
     }
 }
 
@@ -207,10 +192,8 @@ body::before{
     justify-content:center;
 }
 
-
 .login{
     width:100%;
-    max-width:380px;
     padding:30px 20px;
     border-radius:12px;
     box-shadow:0 8px 25px rgba(0,0,0,.15);
@@ -261,13 +244,13 @@ body::before{
 
 /* pequeña animacion cuando el input está seleccionado */
 .cajas{
-    transition: all .3s;
+    transition: all .5s;
 }
 
 .cajas:focus-within{
     border-color:#0b7a53;
     box-shadow:0 5px 15px rgba(11,122,83,.25);
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 }
 
 
@@ -314,12 +297,13 @@ body::before{
 .fbus{
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:center; 
+    margin-top: -20px;
 }
 
 .fbus img{
     width:90%;
-    max-width:200px;
+    max-width:170px;
     height:auto;
     animation:subir .8s ease;
 }
@@ -349,27 +333,28 @@ body::before{
 .contenedor-crearcuenta{
 
     width:100%;
+    padding:20px;
     display:flex;
     justify-content:center;
-    padding:10px;
-    margin-top:-20px;
+    margin-top: -35px;
 
+}
+
+.crearcuenta form{
+    position:relative;
+    top:-15px;
 }
 
 /* Tarjeta donde se encuentra el formulario */
-
 .crearcuenta{
-
     width:100%;
-    max-width:400px;
-    padding:10px 25px 25px 25px;
-    border-radius:15px;
+    padding:10px 20px ;
+    border-radius:12px;
     box-shadow:0 8px 25px rgba(0,0,0,.15);
-
 }
 
-/* Título principal */
 
+/* Título principal */
 h2{
 
     text-align:center;
@@ -438,4 +423,112 @@ h2{
     font-size:13px;
     font-weight:bold;
 
+}
+
+.contenedor-promo{
+    width:100%;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    margin-top: -35px;
+}
+
+.promos{
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:20px 10px;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+
+
+
+/* Tarjetas de promociones */
+
+.tarjeta-promocion{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #0b7a53;
+}
+
+.tarjeta-promocion img{
+    width:100%;
+    display:block;
+}
+
+.pie-promocion{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 12px;
+}
+
+.fecha-vigencia{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#0b7a53;
+    font-size:10px;
+}
+
+.pie-promocion a{
+    text-decoration:none;
+    color:#333;
+    font-size:10px;
+}
+
+
+/* Información de la promoción */
+
+.detalle-promocion{
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 15px;
+    background: #f8f8f8;
+    border-top: 0;
+    transition: all .45s ease;
+}
+
+.detalle-promocion h5{
+    color:#0b7d5b;
+    margin-bottom:10px;
+    margin-top:0;
+}
+
+.detalle-promocion p{
+    margin-bottom:10px;
+    font-size:11px;
+}
+
+/* función para mostrar/ocultar detalles */
+
+.detalle-promocion.mostrar{
+    max-height: 300px; /* Ajusta según el contenido */
+    opacity: 1;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.ver-mas{
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+
+/* flechas abrir y cerrar */
+.ver-mas::after{
+    content:"▼";
+    display:inline-block;
+    font-size:9px;
+    margin-left:5px;
+    transition:transform .35s ease;
+}
+
+.ver-mas.abierto::after{
+    transform:rotate(180deg);
 }
