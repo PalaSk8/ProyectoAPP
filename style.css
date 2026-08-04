@@ -141,7 +141,7 @@ body::before{
     background:#0b7a53;
     color:#fff;
     height:90px;
-    padding:0 20px;
+    padding:10px 15px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -178,6 +178,56 @@ body::before{
     width:140px;
     height:auto;
     display:block;
+}
+
+.switch input[type="checkbox"] {
+    appearance: none;
+    width: 2.2rem;
+    height: 1.2rem;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+
+/* switch modo oscuro */
+
+.switch {
+    --false: #E81B1B;
+    --true: #009068;
+}
+
+.switch input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 0.95rem;
+    height: 0.95rem;
+    border-radius: 50%;
+    background: var(--false);
+    top: 50%;
+    left: 0.15rem;
+    transform: translateY(-50%);
+    transition: .3s;
+}
+
+.switch input[type="checkbox"]:checked::before {
+    left: calc(100% - 1.1rem);
+    background: var(--true);
+}
+
+
+/*Icono de perfil */
+
+.header-icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-icons .fa-circle-user{
+    font-size: 26px;
+    color: white;
 }
 
 
