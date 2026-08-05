@@ -1,3 +1,5 @@
+
+// Función que muestra u oculta la información de una promoción
 function mostrarPromo(enlace){
 
     const detalle = enlace
