@@ -546,6 +546,7 @@ h2{
 
 
 /* Interfaz contacto */
+
 .titulo-chat{
     text-align:center;
     color:#ff3131;
@@ -556,36 +557,84 @@ h2{
 
 /* Cada opción del chat */
 .opcion-chat{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 12px;
-    border-top: 2px solid #00884d;
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:18px;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
-/* Última línea */
-.opcion-chat:last-of-type{
-    border-bottom: 2px solid #00884d;
+
+/* Borde animado */
+.opcion-chat::before{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    top:-50%;
+    left:-50%;
+    background:conic-gradient(
+        transparent,
+        #00a86b,
+        transparent 30%
+    );
+    animation: girarBorde 4s linear infinite;
 }
 
-/* Imagen de cada opción */
+
+/* Capa blanca encima para dejar solo el borde */
+.opcion-chat::after{
+    content:"";
+    position:absolute;
+    inset:3px;
+    background:white;
+    border-radius:15px;
+}
+
+/* animacion de rotacion del borde */
+@keyframes girarBorde{
+
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* Mantener contenido arriba */
+.opcion-chat img,
+.opcion-chat span,
+.opcion-chat i{
+    position:relative;
+    z-index:2;
+}
+
 .opcion-chat img{
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    border-radius: 10%;
-    animation: flotar 3s ease-in-out infinite;
-    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    width:75px;
+    height:75px;
+    border-radius:19px;
+    object-fit:cover;
+    animation:flotar 2s ease-in-out infinite;
+
 }
 
+/* animacion de las imagenes */
 @keyframes flotar{
     0%,100%{
-        transform: translateY(0);
+        transform:translateY(0);
+        box-shadow:0 8px 15px rgba(0,0,0,.15);
     }
     50%{
-        transform: translateY(-4px);
+        transform:translateY(-3px);
+        box-shadow:0 18px 25px rgba(0,0,0,.20);
     }
 }
+
 
 .contenedor-contacto{
     width:100%;
@@ -608,11 +657,16 @@ h2{
 
 /* Texto */
 .opcion-chat span{
-    animation: flotar 3s ease-in-out infinite;
-    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-    font-size: 12px;
-    color: #0b7d5b;
+    flex:1;
+    font-size:12px;
+    color:#0a7a57;
 }
+
+.flecha{
+    color:#0a7a57;
+    font-size:20px;
+}
+
 
 /* estilo para los botones */
 .btn-estilo{
@@ -635,7 +689,7 @@ h2{
     box-shadow:0 5px 12px rgba(255,49,49,.25);
 }
 
-/* Efecto al presionar */
+/* efecto al presionar */
 .btn-estilo:active{
     transform:scale(.96);
 }
