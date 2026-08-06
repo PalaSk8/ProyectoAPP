@@ -53,25 +53,14 @@ body::before{
 
 /* Tabletas: Ancho mínimo de 768px */
 /* ===== TABLET ===== */
-@media (min-width:768px){
+@media (min-width: 768px) {
 
-    .login{
-        max-width:550px;
-        padding:40px;
-    }
-
-    .crearcuenta{
-        max-width:550px;
-        padding:40px;
-    }
-
-    .promos{
-        max-width:550px;
-        padding:40px;
-    }
-    .contacto{
-        max-width:550px;
-        padding:40px;
+    .login,
+    .crearcuenta,
+    .promos,
+    .contacto {
+        max-width: 550px;
+        padding: 40px;
     }
 
 }
@@ -504,7 +493,7 @@ h2{
 }
 
 
-/* Información de la promoción */
+/* información de la promoción */
 
 .detalle-promocion{
     max-height: 0;
@@ -625,7 +614,7 @@ h2{
     color: #0b7d5b;
 }
 
-/* ESTILO GENERAL PARA LOS BOTONES */
+/* estilo para los botones */
 .btn-estilo{
     width:100%;
     padding:13px;
@@ -702,3 +691,4 @@ h2{
 }
 
 
+    
