@@ -173,6 +173,8 @@ body::before{
     display:block;
 }
 
+
+/* switch modo oscuro */
 .switch input[type="checkbox"] {
     appearance: none;
     width: 2.2rem;
@@ -182,9 +184,6 @@ body::before{
     position: relative;
     border: 1px solid #ccc;
 }
-
-
-/* switch modo oscuro */
 
 .switch {
     --false: #E81B1B;
@@ -207,6 +206,24 @@ body::before{
 .switch input[type="checkbox"]:checked::before {
     left: calc(100% - 1.1rem);
     background: var(--true);
+}
+
+.switch input[type="checkbox"]::after {
+    content: "☀";
+    position: absolute;
+    font-size: 0.5rem;
+    top: 50%;
+    right: 21px;
+    transform: translateY(-50%);
+    color: #009068;
+}
+
+
+.switch input[type="checkbox"]:not(:checked)::after {
+    content: "⏾";
+    left: 21px;
+    right: auto;
+    color: #E81B1B;
 }
 
 
@@ -691,7 +708,7 @@ h2{
 
 /* efecto al presionar */
 .btn-estilo:active{
-    transform:scale(.96);
+    transform:scale(.90);
 }
 
 /* Iconos */
@@ -722,6 +739,7 @@ h2{
     animation:brillo 3.5s infinite;
 }
 
+/* animacion del brillo de los botones */
 @keyframes brillo{
     0%{
         left:-150%;
@@ -741,8 +759,101 @@ h2{
     height: auto;
     border-radius: 12px;
     margin-bottom: 15px;
+}
 
+/* =========================================
+            MODO OSCURO
+========================================= */
+
+body.dark-mode{
+    background-color:#121212;
+    color:#fff;
+}
+
+/* Oscurecer el filtro de la imagen */
+body.dark-mode::before{
+    background:rgba(0,0,0,.87);
+}
+
+/* Tarjetas principales */
+body.dark-mode .login,
+body.dark-mode .crearcuenta,
+body.dark-mode .promos,
+body.dark-mode .contacto{
+    background:#1e1e1e;
+    color:#ffffff;
+}
+
+/* Divs blancos */
+body.dark-mode .tarjeta-promocion{
+    background:#242424;
+    border-color:#2e2e2e;
+}
+
+body.dark-mode .detalle-promocion{
+    background:#242424;
+    color:white;
+}
+
+body.dark-mode .opcion-chat::after{
+    background:#242424;
+}
+
+/* Inputs */
+body.dark-mode .cajas{
+    background:#2b2b2b;
+    border-color:#555;
+}
+
+body.dark-mode .cajas input{
+    color:white;
+}
+
+body.dark-mode .cajas input::placeholder{
+    color:#bbb;
+}
+
+/* todos los textos verdes pasan a blanco */
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p,
+body.dark-mode .recuperar,
+body.dark-mode .sin-registro,
+body.dark-mode .fecha-vigencia,
+body.dark-mode .titulo-chat,
+body.dark-mode .opcion-chat span,
+body.dark-mode .flecha,
+body.dark-mode .login h2,
+body.dark-mode .login p,
+body.dark-mode .crearcuenta h3{
+    color:white !important;
+}
+
+/* Links */
+body.dark-mode a{
+    color:white;
 }
 
 
-    
+body.dark-mode .bottom-nav .nav-item{
+    color: black;
+}
+
+body.dark-mode .bottom-nav .nav-item.active{
+    color: white ;
+}
+
+body.dark-mode .header-icons i{
+    color: black;
+    border-color:#134023;
+}
+
+body.dark-mode .switch input[type="checkbox"]{
+    background:black;
+    border-color:#134023;
+}
+
+body.dark-mode header i{
+    color:black;
+}
