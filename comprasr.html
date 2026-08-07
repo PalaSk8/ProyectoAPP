@@ -12,12 +12,11 @@
 <!-- header con logo al centro y flecha de retroceso -->
 <body>
         <header class="header">
-            <i class="fa-solid fa-chevron-left"></i>
+            <i class="fa-solid fa-chevron-left" onclick="window.location.href='comprasr.html'"></i>
 
             <div class="logo">
                 <img id="logo" src="img/logo blanco.png" alt="Logo">
             </div>
-
             <div class="header-icons">
         
         <!-- Switch modo oscuro -->
@@ -27,8 +26,107 @@
 
              </div>
         </header>
-    
-    
+        <main class="contenido">
+
+    <h2 class="titulo-pregunta">¿A dónde viajas?</h2>
+
+    <!-- Stepper con 4 puntos y camión -->
+<div class="stepper" data-paso-actual="1">
+    <span class="stepper-linea"></span>
+    <div class="stepper-puntos">
+        <span class="stepper-punto activo" data-paso="1"></span>
+        <span class="stepper-punto" data-paso="2"></span>
+        <span class="stepper-punto" data-paso="3"></span>
+        <span class="stepper-punto" data-paso="4"></span>
+    </div>
+    <img src="img/autobús.png" alt="camión" class="stepper-bus" id="stepperBus">
+</div>
+
+    <!-- Origen y Destino -->
+    <div class="campos-viaje">
+        <div class="campo-origen-destino">
+
+            <div class="campo-wrapper">
+                <button class="campo-btn origen" id="btnOrigen">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Origen</span>
+                    <i class="fa-solid fa-chevron-down flecha"></i>
+                </button>
+                <ul class="lista-destinos" id="listaOrigen"></ul>
+            </div>
+
+            <div class="campo-wrapper">
+                <button class="campo-btn destino" id="btnDestino">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Destino</span>
+                    <i class="fa-solid fa-chevron-down flecha"></i>
+                </button>
+                <ul class="lista-destinos" id="listaDestino"></ul>
+            </div>
+
+        </div>
+
+        <button class="btn-swap" id="btnSwap" title="Intercambiar origen y destino">
+            <i class="fa-solid fa-right-left"></i>
+        </button>
+    </div>
+
+    <!-- Fechas -->
+    <p class="label-seccion">¿Cuándo viajas?</p>
+    <div class="fechas">
+
+        <div class="campo-wrapper fecha-wrapper">
+    <button class="fecha-btn" id="fechaSalida">
+        <i class="fa-regular fa-calendar"></i>
+        <span class="fecha-texto">Fecha de Salida</span>
+    </button>
+    <ul class="lista-fechas" id="listaFechaSalida"></ul>
+</div>
+
+        <div class="campo-wrapper fecha-wrapper">
+    <button class="fecha-btn" id="fechaRegreso">
+        <i class="fa-regular fa-calendar"></i>
+        <span class="fecha-texto">Regreso (Opcional)</span>
+    </button>
+    <ul class="lista-fechas" id="listaFechaRegreso"></ul>
+</div>
+
+    </div>
+
+    <!-- Pasajeros -->
+    <div class="pasajeros">
+        <div class="pasajero-fila">
+            <span class="pasajero-label">Adultos</span>
+            <div class="contador" data-min="1" data-max="9" data-valor="1">
+                <button class="contador-btn menos">-</button>
+                <span class="contador-valor">1</span>
+                <button class="contador-btn mas">+</button>
+            </div>
+        </div>
+
+        <div class="pasajero-fila">
+            <span class="pasajero-label">Niños</span>
+            <div class="contador" data-min="0" data-max="9" data-valor="0">
+                <button class="contador-btn menos">-</button>
+                <span class="contador-valor">0</span>
+                <button class="contador-btn mas">+</button>
+            </div>
+        </div>
+
+        <div class="pasajero-fila">
+            <span class="pasajero-label">INAPAM</span>
+            <div class="contador" data-min="0" data-max="9" data-valor="0">
+                <button class="contador-btn menos">-</button>
+                <span class="contador-valor">0</span>
+                <button class="contador-btn mas">+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- en comprasr.html -->
+<button class="btn-buscar" id="btnBuscarBoletos">Buscar Boletos</button>
+
+</main>
 
 <nav class="bottom-nav">
     <!-- icono de autobus  -->
