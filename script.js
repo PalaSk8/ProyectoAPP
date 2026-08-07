@@ -60,3 +60,29 @@ if (switchDark) {
         }
     });
 }
+
+
+
+// ==========================
+// Menú hamburguesa
+// ==========================
+
+const btnMenu = document.getElementById("btnMenu");
+const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("overlay");
+
+if (btnMenu && sideMenu && overlay) {
+
+    btnMenu.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        sideMenu.classList.toggle("open");
+        overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", function () {
+        sideMenu.classList.remove("open");
+        overlay.classList.remove("show");
+    });
+
+}
