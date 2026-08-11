@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>contacto_sinregistro</title>
+    <title>agregarpasajero</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -19,6 +19,11 @@
             </div>
 
             <div class="header-icons">
+
+        <!--  icono perfil -->
+        <a href="miperfil.html">
+            <i class="fa-solid fa-circle-user"></i>
+        </a>
         
         <!-- Switch modo oscuro -->
         <label class="switch">
@@ -29,120 +34,104 @@
         </header>
 
 
-        <!-- Título principal -->
-            <h2>Platica con nosotros</h2>
+        <!-- AGREGAR PASAJERO -->
+         <h2>Agregar pasajero</h2>
 
-            <main class="contenedor-contacto">
+<main class="contenedor-contacto">
 
     <section class="contacto">
+    <p class="titulo-chat" style="margin-bottom: 15px; font-size: 15px;">Agrega y administra los pasajeros que
+        viajan contigo</p>
+  
 
-        <p class="titulo-chat">En nuestro chat podrás:</p>
-         <!-- Opción 1 -->
-        <div class="opcion-chat">
-        <i class="fa-solid fa-file-invoice-dollar icono-chat"></i>
-    <span>Obtener asesorías para facturar su boleto</span>
-    <a href="https://wa.me/" target="_blank">
-        <i class="fa-solid fa-chevron-right flecha"></i>
-    </a>
-</div>
-<!-- Opción 2 -->
-<div class="opcion-chat">
-    <i class="fa-solid fa-comments icono-chat"></i>
-    <span>Hacer comentarios sobre nuestro servicio</span>
-    <a href="https://wa.me/" target="_blank">
-        <i class="fa-solid fa-chevron-right flecha"></i>
-    </a>
-</div>
-<!-- Opción 3 -->
-<div class="opcion-chat">
-    <i class="fa-solid fa-bus icono-chat"></i>
-    <span>Consultar horarios, precios y destinos de nuestro servicio</span>
-    <a href="https://wa.me/" target="_blank">
-        <i class="fa-solid fa-chevron-right flecha"></i>
-    </a>
-</div>
 
-        <!-- Botón de WhatsApp -->
-        <a href="https" class="btn-estilo" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i>
-            Iniciar conversación
-        </a>
+    <!-- NOMBRE -->
+
+       <div class="cajas">
+                    <input type="text" placeholder="Nombre Completo">
+                </div>
+
+     
+    <!-- CORREO -->
+
+    <div class="cajas">
+                    <input type="email" placeholder="Correo electrónico">
+                </div>
+
+
+    <!-- TIPO DE PASAJERO -->
+
+    <div class="tipo-pasajero">
+
+        <label>
+            Tipo de Pasajero
+        </label>
+
+        <div class="opcion">
+
+            <input
+                type="checkbox"
+                id="adulto"
+            >
+
+            <label for="adulto">
+                Adulto
+            </label>
+
+        </div>
+
+
+        <div class="opcioninf">
+
+            <input
+                type="checkbox"
+                id="infante"
+            >
+
+            <label for="infante">
+                Infante
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- LÍNEA -->
+
+    <div class="separador"></div>
+
+
+    <!-- GUARDAR -->
+
+    <button class="btn-estilo">
+        Guardar pasajero
+    </button>
+
+
+    <!-- INFORMACIÓN -->
+
+    <div class="informacion">
+
+        <div class="icono-info">
+            <i class="fa-solid fa-info"></i>
+        </div>
+
+        <p>
+            Usa a tus pasajeros frecuentes<br>
+            para comprar boletos más rápido
+        </p>
+
+    </div>
 
     </section>
-
 </main>
-
-<div class="fbus">
-    <img src="img/fbusrc.png" alt="bus">
-</div>
-
     
     
-
-<!-- Menú lateral -->
-        <div id="overlay"></div>
-        <div id="sideMenu">
-
-    <div class="menu-profile">
-        <div class="avatar">
-            <i class="fa-solid fa-user"></i>
-        </div>
-
-        <div>
-            <h3 id="nombreUsuario">Usuario</h3>
-        </div>
-    </div>
-
-
-    <div class="menu-options">
-
-        <a href="#">
-            <i class="fa-solid fa-user"></i>
-            <span>Mi perfil</span>
-        </a>
-
-        <a href="#">
-            <i class="fa-solid fa-users"></i>
-            <span>Mis pasajeros</span>
-        </a>
-
-        <a href="#">
-            <i class="fa-solid fa-bus"></i>
-            <span>Mis viajes</span>
-        </a>
-
-        <a href="#">
-            <i class="fa-solid fa-star"></i>
-            <span>Puntos Flechamigo</span>
-        </a>
-
-        <a href="#">
-            <i class="fa-solid fa-circle-play"></i>
-            <span>Tutorial</span>
-        </a>
-
-        <a href="#">
-            <i class="fa-solid fa-building"></i>
-            <span>Nuestra historia</span>
-        </a>
-
-        <a href="#">
-            <i class="fa-solid fa-heart"></i>
-            <span>Califica nuestra app</span>
-        </a>
-
-        <a href="#">
-            <i class="fa-solid fa-circle-info"></i>
-            <span>Acerca de</span>
-        </a>
-
-    </div>
-
-</div>
 
 <nav class="bottom-nav">
     <!-- icono de autobus  -->
-   <a href="comprasr.html" class="nav-item">
+   <a href="comprasr.html" class="nav-item ">
     <svg xmlns="http://www.w3.org/2000/svg"
          width="24"
          height="24"
@@ -174,23 +163,22 @@
     <span></span>
 </a>
     <!-- icono de mensaje  -->
-  <a href="contacsr.html" class="nav-item active">
+  <a href="contacsr.html" class="nav-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     </svg>
     <span></span>
 </a>
     <!-- icono de menu Hamburgesa  -->
-     <a href="#" class="nav-item" id="btnMenu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </a>
-
-</nav>
+     <a href="menusr.html" class="nav-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <span></span>
+</a>
+</nav>  
 
 </body>
 

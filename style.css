@@ -2572,3 +2572,304 @@ body.dark-mode .opcion-idioma:has(input:checked) {
     background: #29463d;
     border-color: var(--verde-flecha);
 }
+
+
+
+
+/* =========================
+   MIS PASAJEROS
+========================= */
+
+/* SUBTÍTULO */
+
+.subtitulo {
+    text-align: center;
+    color: var(--verde-flecha);
+    line-height: 17px;
+    margin: 0 0 38px;
+    color: var(--rojo-flecha);
+}
+
+
+/* PASAJERO */
+
+.pasajero {
+    width: 100%;
+    min-height: 76px;
+    border-top: 2px solid var(--verde-flecha);
+    display: flex;
+    align-items: center;
+    padding: 7px 20px;
+    text-align: left;
+}
+
+
+/* AVATAR */
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+
+.adulto {
+    background: #079b45;
+}
+
+
+.naranja {
+    background: #f28752;
+}
+
+
+.infante {
+    background: #ed3049;
+}
+
+
+/* DATOS */
+
+.datos-pasajero {
+    flex: 1;
+}
+
+
+.nombre {
+    color: var(--verde-flecha);
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+
+.tipo {
+    display: inline-block;
+    background: var(--verde-flecha);
+    color: white;
+    padding: 3px 7px;
+    border-radius: 4px;
+}
+
+.tipoinf {
+    display: inline-block;
+    background: #33a542;
+    color: white;
+    padding: 3px 7px;
+    border-radius: 4px;
+}
+
+
+/* PASAJERO PRINCIPAL */
+
+.principal {
+    color: var(--verde-flecha-oscuro);
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.principal span {
+    color: var(--verde-flecha);
+}
+
+/* BOTONES */
+
+.acciones {
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+}
+
+
+.acciones button {
+    border: none;
+    background: transparent;
+    color: var(--verde-flecha);
+    font-size: 16px;
+}
+
+.btn-agregar i {
+    font-size: 21px;
+}
+
+
+/* INFORMACIÓN */
+
+.informacion {
+    margin-top: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: var(--verde-flecha);
+    line-height: 16px;
+}
+
+
+.icono-info {
+    width: 19px;
+    height: 19px;
+    border: 2px solid var(--verde-flecha);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.icono-info i {
+    font-size: 10px;
+}
+
+
+
+
+/* =========================
+   AGREGAR PASAJERO
+========================= */
+
+.agregar-pasajero {
+    width: 100%;
+    text-align: center;
+    padding-top: 14px;
+}
+
+
+/* =========================
+   PASAJERO
+========================= */
+
+.tipo-pasajero {
+    text-align: left;
+    padding: 0 33px;
+    margin-top: 2px;
+}
+
+
+.tipo-pasajero > label {
+    display: block;
+    color: var(--verde-flecha);
+    margin-bottom: 5px;
+}
+
+
+.opcion {
+    display: flex;
+    align-items: center;
+    height: 27px;
+    gap: 6px;
+}
+.opcioninf {
+    display: flex;
+    align-items: center;
+    height: 27px;
+    gap: 6px;
+}
+
+
+/* CHECKBOX */
+
+.opcion input {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--verde-flecha-oscuro);
+    border-radius: 3px;
+    background: transparent;
+    position: relative;
+}
+.opcioninf input {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--verde-flecha-oscuro);
+    border-radius: 3px;
+    background: transparent;
+    position: relative;
+}
+
+
+.opcion input:checked {
+    background: var(--verde-flecha);
+}
+.opcioninf input:checked {
+    background: var(--verde-flecha);
+}
+
+
+.opcion input:checked::after {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    left: 1px;
+    top: -3px;
+}
+.opcioninf input:checked::after {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    left: 1px;
+    top: -3px;
+}
+
+
+/* TEXTO ADULTO / INFANTE */
+
+.opcion label {
+    background: var(--verde-flecha);
+    color: white;
+    font-size: 13px;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.opcioninf label{
+    background: #33a542;
+    color: white;
+    font-size: 13px;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+/* =========================
+   SEPARADOR
+========================= */
+
+.separador {
+    width: 100%;
+    height: 2px;
+    background: var(--verde-flecha);
+    margin-top: 14px;
+}
+
+
+/* =========================
+   BOTÓN GUARDAR
+========================= */
+
+.btn-guardar {
+
+    width: 182px;
+    height: 35px;
+    margin-top: 21px;
+    border: none;
+    border-radius: 20px;
+    background: var(--verde-flecha);
+    color: white;
+    font-size: 12px;
+}
+
