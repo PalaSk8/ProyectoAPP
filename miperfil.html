@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miperfil</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- header con logo al centro y flecha de retroceso -->
+<body>
+        <header class="header">
+            <i class="fa-solid fa-chevron-left"></i>
+
+            <div class="logo">
+                <img id="logo" src="img/logo blanco.png" alt="Logo">
+            </div>
+
+            <div class="header-icons">
+
+        <!--  icono perfil -->
+        <a href="miperfil.html">
+            <i class="fa-solid fa-circle-user"></i>
+        </a>
+        
+        <!-- Switch modo oscuro -->
+        <label class="switch">
+            <input type="checkbox" id="darkMode">
+        </label>
+
+             </div>
+        </header>
+
+
+        
+     <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ====================================================== -->
+ <!-- Título -->
+        <h1 class="titulo-perfil">
+            Mi Perfil
+        </h1>
+
+        <section class="encabezado-perfil">
+
+
+            <!-- Foto -->
+            <div class="contenedor-avatar">
+
+                <img src="img/fbuslog.png"
+                     alt="Foto de perfil"
+                     class="imagen-avatar">
+
+
+                <!-- Botón de cámara -->
+                <button class="boton-camara"
+                        id="botonCamara"
+                        aria-label="Cambiar foto">
+
+                    <i class="fa-solid fa-camera"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- Nombre -->
+            <h2 class="nombre-usuario"
+                id="nombreUsuario">Usuario</h2>
+
+        </section>
+    
+    <main class="contenedor-contacto">
+
+        <section class="contacto">
+
+        <!-- =================================================
+             INFORMACIÓN DEL USUARIO
+        ================================================== -->
+
+        
+
+
+        <!-- =================================================
+             INFORMACIÓN PERSONAL
+        ================================================== -->
+
+        <h3 class="titulo-seccion">
+            Información personal
+        </h3>
+
+
+        <section class="tarjeta-informacion">
+
+
+            <!-- Nombre -->
+            <div class="fila-informacion">
+
+                <div class="texto-informacion">
+
+                    <strong>
+                        Nombre completo:
+                    </strong>
+
+                    <span id="nombreCompleto">
+                        Usuario
+                    </span>
+
+                </div>
+
+
+                <button class="boton-editar"
+                        data-tipo="nombre"
+                        aria-label="Editar nombre">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- Correo -->
+            <div class="fila-informacion">
+
+                <div class="texto-informacion">
+
+                    <strong>
+                        Correo electrónico:
+                    </strong>
+
+                    <span id="correoElectronico">
+                        @gmail.com
+                    </span>
+
+                </div>
+
+
+                <button class="boton-editar"
+                        data-tipo="correo"
+                        aria-label="Editar correo">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- Teléfono -->
+            <div class="fila-informacion">
+
+                <div class="texto-informacion">
+
+                    <strong>
+                        Teléfono:
+                    </strong>
+
+                    <span id="numeroTelefono">
+                        7221165441
+                    </span>
+
+                </div>
+
+
+                <button class="boton-editar"
+                        data-tipo="telefono"
+                        aria-label="Editar teléfono">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SEGURIDAD
+        ================================================== -->
+
+        <h3 class="titulo-seccion">
+            Seguridad
+        </h3>
+
+
+        <a href="cambiarcontraseña.html" class="boton-opcion"
+                id="botonContrasena">
+
+
+            <i class="fa-solid fa-lock icono-opcion"></i>
+
+
+            <span>
+                Cambiar contraseña
+            </span>
+
+
+            <i class="fa-solid fa-chevron-right flecha-opcion"></i>
+
+
+        </a>
+
+
+
+        <!-- =================================================
+             PREFERENCIAS
+        ================================================== -->
+
+        <h3 class="titulo-seccion">
+            Preferencias
+        </h3>
+
+
+        <section class="tarjeta-preferencias">
+
+
+            <!-- Idioma -->
+            <button class="fila-preferencia"
+                    id="botonIdioma">
+
+                <i class="fa-solid fa-language icono-preferencia"></i>
+
+
+                <span>
+                    Idioma
+                </span>
+
+
+                <i class="fa-solid fa-chevron-right flecha-preferencia"></i>
+
+            </button>
+
+
+
+            <!-- Notificaciones -->
+            <div class="fila-preferencia fila-notificaciones">
+
+                <i class="fa-solid fa-bell icono-preferencia"></i>
+
+
+                <span>
+                    Notificaciones
+                </span>
+
+
+                <!-- Interruptor -->
+                <label class="interruptor-notificaciones">
+
+                    <input type="checkbox"
+                           id="notificaciones"
+                           checked>
+
+                    <span class="deslizador-notificaciones"></span>
+
+                </label>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+     MODAL EDITAR INFORMACIÓN
+===================================================== -->
+
+<div class="fondo-modal" id="modalEditar">
+
+    <div class="modal">
+
+        <button class="boton-cerrar-modal" id="cerrarModalEditar">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="encabezado-modal">
+
+            <div class="icono-modal">
+                <i class="fa-solid fa-pen"></i>
+            </div>
+
+            <h2 id="tituloModalEditar">
+                Editar información
+            </h2>
+
+        </div>
+
+
+        <div class="contenido-modal">
+
+            <label id="etiquetaModalEditar">
+                Nombre completo
+            </label>
+
+            <input
+                type="text"
+                id="campoModalEditar"
+                autocomplete="off"
+            >
+
+            <p class="mensaje-modal" id="mensajeModalEditar"></p>
+
+        </div>
+
+
+        <div class="botones-modal">
+
+            <button
+                type="button"
+                class="boton-modal cancelar"
+                id="cancelarModalEditar">
+
+                Cancelar
+
+            </button>
+
+
+            <button
+                type="button"
+                class="boton-modal guardar"
+                id="guardarModalEditar">
+
+                Guardar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL CAMBIAR FOTO
+===================================================== -->
+
+<div class="fondo-modal" id="modalFoto">
+
+    <div class="modal modal-foto">
+
+        <button class="boton-cerrar-modal" id="cerrarModalFoto">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="encabezado-modal">
+
+            <div class="icono-modal">
+
+                <i class="fa-solid fa-camera"></i>
+
+            </div>
+
+            <h2>
+                Foto de perfil
+            </h2>
+
+        </div>
+
+
+        <div class="contenido-foto">
+
+            <div class="vista-previa-foto">
+
+                <img
+                    id="vistaPreviaFoto"
+                    src="img/avatar.png"
+                    alt="Vista previa"
+                >
+
+            </div>
+
+
+            <label
+                for="selectorFoto"
+                class="boton-seleccionar-foto">
+
+                <i class="fa-solid fa-image"></i>
+
+                Seleccionar foto
+
+            </label>
+
+
+            <input
+                type="file"
+                id="selectorFoto"
+                accept="image/*"
+                hidden
+            >
+
+        </div>
+
+
+        <div class="botones-modal">
+
+            <button
+                type="button"
+                class="boton-modal cancelar"
+                id="cancelarModalFoto">
+
+                Cancelar
+
+            </button>
+
+
+            <button
+                type="button"
+                class="boton-modal guardar"
+                id="guardarModalFoto">
+
+                Guardar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL IDIOMA
+===================================================== -->
+
+<div class="fondo-modal" id="modalIdioma">
+
+    <div class="modal modal-idioma">
+
+        <button
+            class="boton-cerrar-modal"
+            id="cerrarModalIdioma">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="encabezado-modal">
+
+            <div class="icono-modal">
+
+                <i class="fa-solid fa-language"></i>
+
+            </div>
+
+            <h2>
+                Idioma
+            </h2>
+
+        </div>
+
+
+        <div class="opciones-idioma">
+
+            <label class="opcion-idioma">
+
+                <input
+                    type="radio"
+                    name="idioma"
+                    value="es"
+                    checked
+                >
+
+                <span class="radio-personalizado"></span>
+
+                <span>
+                    Español
+                </span>
+
+            </label>
+
+
+            <label class="opcion-idioma">
+
+                <input
+                    type="radio"
+                    name="idioma"
+                    value="en"
+                >
+
+                <span class="radio-personalizado"></span>
+
+                <span>
+                    English
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <div class="botones-modal">
+
+            <button
+                type="button"
+                class="boton-modal cancelar"
+                id="cancelarModalIdioma">
+
+                Cancelar
+
+            </button>
+
+
+            <button
+                type="button"
+                class="boton-modal guardar"
+                id="guardarModalIdioma">
+
+                Guardar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+        <!-- Menú lateral -->
+        <div id="overlay"></div>
+        <div id="sideMenu">
+
+    <div class="menu-profile">
+        <div class="avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <div>
+            <h3 id="nombreUsuario">Usuario</h3>
+        </div>
+    </div>
+
+    
+
+
+    <div class="menu-options">
+
+        <a href="">
+            <i class="fa-solid fa-user"></i>
+            <span>Mi perfil</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-users"></i>
+            <span>Mis pasajeros</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-bus"></i>
+            <span>Mis viajes</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-star"></i>
+            <span>Puntos Flechamigo</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-circle-play"></i>
+            <span>Tutorial</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-building"></i>
+            <span>Nuestra historia</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-heart"></i>
+            <span>Califica nuestra app</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Acerca de</span>
+        </a>
+
+    </div>
+
+</div>
+
+<nav class="bottom-nav">
+    <!-- icono de autobus  -->
+   <a href="compra.html" class="nav-item active">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="24"
+         height="24"
+         fill="currentColor"
+         class="bi bi-bus-front"
+         viewBox="0 0 16 16">
+
+        <path d="M5 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0m8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-6-1a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2zm1-6c-1.876 0-3.426.109-4.552.226A.5.5 0 0 0 3 4.723v3.554a.5.5 0 0 0 .448.497C4.574 8.891 6.124 9 8 9s3.426-.109 4.552-.226A.5.5 0 0 0 13 8.277V4.723a.5.5 0 0 0-.448-.497A44 44 0 0 0 8 4m0-1c-1.837 0-3.353.107-4.448.22a.5.5 0 1 1-.104-.994A44 44 0 0 1 8 2c1.876 0 3.426.109 4.552.226a.5.5 0 1 1-.104.994A43 43 0 0 0 8 3"/>
+
+        <path d="M15 8a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1V2.64c0-1.188-.845-2.232-2.064-2.372A44 44 0 0 0 8 0C5.9 0 4.208.136 3.064.268 1.845.408 1 1.452 1 2.64V4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v3.5c0 .818.393 1.544 1 2v2a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V14h6v1.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-2c.607-.456 1-1.182 1-2zM8 1c2.056 0 3.71.134 4.822.261.676.078 1.178.66 1.178 1.379v8.86a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11.5V2.64c0-.72.502-1.301 1.178-1.379A43 43 0 0 1 8 1"/>
+    </svg>
+
+    <span></span>
+</a>
+    <!-- icono de punto de venta  -->
+<a href="pventa.html" class="nav-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+    <span></span>
+</a>
+    <!-- icono de promocion  -->
+    <a href="promo.html" class="nav-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.59 13.41 11 3H4v7l9.59 9.59a2 2 0 0 0 2.82 0l4.18-4.18a2 2 0 0 0 0-2.82z"></path>
+        <circle cx="7.5" cy="7.5" r="1.5"></circle>
+    </svg>
+    <span></span>
+</a>
+    <!-- icono de mensaje  -->
+  <a href="contac.html" class="nav-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span></span>
+</a>
+    <!-- icono de menu Hamburgesa  -->
+     <a href="#" class="nav-item" id="btnMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </a>
+
+</nav>
+
+</body>
+
+<script src="script.js"></script>
+
+</html>

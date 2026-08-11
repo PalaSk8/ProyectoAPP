@@ -34,6 +34,100 @@
         </header>
 
 
+        <main class="logincontenedor">
+
+    <section class="crearcuenta">
+
+        <h2>
+            Cambiar contraseña
+        </h2>
+
+        <p class="titulo-chat" style="margin-bottom: 40px;">
+            Administra la seguridad de tu cuenta
+        </p>
+
+        <form id="formCambiarContrasena">
+
+            <!-- Contraseña actual -->
+            <div class="cajas">
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="contrasenaActual"
+                    placeholder="Contraseña actual"
+                    required
+                >
+
+                <i class="fa-solid fa-eye"
+                   onclick="mostrarPassword('contrasenaActual', this)">
+                </i>
+            </div>
+
+
+            <!-- Nueva contraseña -->
+            <div class="cajas">
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="nuevaContrasena"
+                    placeholder="Nueva contraseña"
+                    required
+                >
+
+                <i class="fa-solid fa-eye"
+                   onclick="mostrarPassword('nuevaContrasena', this)">
+                </i>
+            </div>
+
+
+            <!-- Confirmar contraseña -->
+            <div class="cajas">
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="confirmarContrasena"
+                    placeholder="Confirmar nueva contraseña"
+                    required
+                >
+
+                <i class="fa-solid fa-eye"
+                   onclick="mostrarPassword('confirmarContrasena', this)">
+                </i>
+            </div>
+
+
+            <!-- Botones -->
+            <div class="botones-modal">
+
+                <a href="miperfil.html"
+                   class="boton-modal cancelar"
+                   style="display:flex; align-items:center; justify-content:center; text-decoration:none; margin-right: 10px; margin-top:26px">
+                    Cancelar
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn-estilo">
+                    Cambiar
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+<div class="fbus">
+    <img src="img/fdcambiarcontra.png" alt="bus">
+</div>
+
+
+
         <!-- Menú lateral -->
         <div id="overlay"></div>
         <div id="sideMenu">

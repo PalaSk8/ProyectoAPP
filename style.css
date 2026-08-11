@@ -69,7 +69,8 @@ body::before{
     .login,
     .crearcuenta,
     .promos,
-    .contacto {
+    .contacto
+     {
         max-width: 550px;
         padding: 40px;
     }
@@ -146,9 +147,13 @@ body::before{
     z-index:999;
 
     overflow-y:auto; /* 👈 activa scroll vertical */
-    overflow-x:hidden;
+    overflow-x:auto;
 }
 
+#sideMenu > .menu-profile,
+#sideMenu > .menu-options {
+    display: block;
+}
 
 /* cuando abre */
 #sideMenu.open{
@@ -1796,4 +1801,766 @@ body.dark-mode header i{
 }
 #btnMenu:active svg{
     transform:scale(1.2);
+}
+
+/* =========================================================
+        PÁGINA MI PERFIL
+========================================================= */
+
+
+/* Título */
+.titulo-perfil {
+    color: var(--verde-flecha);
+    text-align: center;
+    font-size: 20px;
+}
+
+
+/* =========================================================
+        ENCABEZADO DEL PERFIL
+========================================================= */
+
+.encabezado-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/* Contenedor de la foto */
+.contenedor-avatar {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 12px;
+}
+
+/* Imagen */
+.imagen-avatar {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--verde-flecha);
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(11,122,83,.25);
+}
+
+/* Botón de cámara */
+.boton-camara {
+    position: absolute;
+    right: -3px;
+    bottom: 2px;
+    width: 28px;
+    height: 28px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: var(--rojo-flecha);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-camara i {
+    font-size: 15px;
+}
+
+.boton-camara:active {
+    transform: scale(.9);
+}
+
+/* Nombre del usuario */
+.nombre-usuario {
+    color: var(--verde-flecha);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0;
+}
+
+
+/* =========================================================
+        TÍTULOS DE SECCIÓN
+========================================================= */
+
+.titulo-seccion {
+    color: var(--verde-flecha);
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 0 12px;
+}
+
+
+/* =========================================================
+        TARJETA INFORMACIÓN PERSONAL
+========================================================= */
+
+.tarjeta-informacion {
+    background: #e2eae4;
+    border-radius: 16px;
+    padding: 5px 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    border: 1px solid rgba(11,122,83,.12);
+}
+
+/* Cada fila */
+.fila-informacion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 65px;
+    border-bottom: 1px solid var(--verde-flecha);
+}
+
+.fila-informacion:last-child {
+    border-bottom: none;
+}
+
+/* Texto */
+.texto-informacion {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    padding-right: 10px;
+}
+
+.texto-informacion strong {
+    color: #555;
+    font-size: 12px;
+}
+
+.texto-informacion span {
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+
+    overflow: hidden;
+}
+
+/* Botón editar */
+.boton-editar {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(11,122,83,.10);
+    color: var(--verde-flecha);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+}
+
+.boton-editar i {
+    font-size: 13px;
+}
+
+.boton-editar:active {
+    transform: scale(.88);
+    background: var(--verde-flecha);
+}
+
+
+/* =========================================================
+        CAMBIAR CONTRASEÑA
+========================================================= */
+
+.boton-opcion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    background: #e2eae4;
+    color: #333;
+    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    border: 1px solid rgba(11,122,83,.12);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all .2s ease;
+    text-decoration: none;
+}
+
+
+/* Icono del candado */
+.icono-opcion {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11,122,83,.10);
+    color: var(--verde-flecha);
+    font-size: 15px;
+}
+
+/* Texto ocupa el espacio */
+.boton-opcion span {
+    flex: 1;
+    text-align: left;
+}
+
+/* Flecha */
+.flecha-opcion {
+    color: #999;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+        PREFERENCIAS
+========================================================= */
+
+.tarjeta-preferencias {
+    background: #e2eae4;
+    border-radius: 16px;
+    padding: 5px 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    border: 1px solid rgba(11,122,83,.12);
+}
+
+/* Filas de preferencias */
+.fila-preferencia {
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    border-bottom: 1px solid var(--verde-flecha);
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    color: #333;
+    padding: 10px 0;
+}
+
+.fila-preferencia:last-child {
+    border-bottom: none;
+}
+
+/* Iconos */
+.icono-preferencia {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11,122,83,.10);
+    color: var(--verde-flecha);
+    font-size: 15px;
+}
+
+/* Texto */
+.fila-preferencia > span {
+    flex: 1;
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Flecha */
+.flecha-preferencia {
+    color: #999;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+        SWITCH DE NOTIFICACIONES
+========================================================= */
+
+.interruptor-notificaciones {
+    position: relative;
+    width: 45px;
+    height: 24px;
+}
+
+/* Ocultar checkbox original */
+.interruptor-notificaciones input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Fondo */
+.deslizador-notificaciones {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 30px;
+    transition: .3s;
+}
+
+/* Círculo */
+.deslizador-notificaciones::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transition: .3s;
+}
+
+/* Activado */
+.interruptor-notificaciones input:checked
++ .deslizador-notificaciones {
+    background: var(--verde-flecha);
+}
+
+/* Mover círculo */
+.interruptor-notificaciones input:checked
++ .deslizador-notificaciones::before {
+    transform: translateX(21px);
+}
+
+
+/* =========================================================
+        MODO OSCURO - MI PERFIL
+========================================================= */
+
+
+body.dark-mode .tarjeta-informacion,
+body.dark-mode .boton-opcion,
+body.dark-mode .tarjeta-preferencias {
+    background: #292929;
+    border-color: #333;
+    color: #5e5c5c;
+}
+
+body.dark-mode .fila-informacion,
+body.dark-mode .fila-preferencia {
+    border-color: #333;
+}
+
+body.dark-mode .nombre-usuario {
+    color: var(--verde-flecha) !important;
+
+}
+body.dark-mode .texto-informacion strong {
+    color: #aaa;
+}
+
+body.dark-mode .texto-informacion span {
+    color: #fff;
+}
+
+body.dark-mode .boton-opcion {
+    color: #fff;
+}
+
+body.dark-mode .fila-preferencia {
+    color: #fff;
+}
+
+body.dark-mode .boton-editar,
+body.dark-mode .icono-opcion,
+body.dark-mode .icono-preferencia {
+    background: var(--verde-flecha);
+    color: #fff;
+}
+
+body.dark-mode .imagen-avatar {
+    border-color: var(--verde-flecha);
+    background: #242424;
+}
+
+
+/* =====================================================
+   MODALES DE MI PERFIL
+===================================================== */
+
+
+.fondo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+
+/* Modal visible */
+
+.fondo-modal.activo {
+    display: flex;
+}
+
+
+/* =====================================================
+   CAJA DEL MODAL
+===================================================== */
+
+.modal {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    padding: 25px 22px 20px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    animation: aparecerModal 0.2s ease;
+}
+
+
+/* Animación */
+
+@keyframes aparecerModal {
+
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =====================================================
+   BOTÓN CERRAR
+===================================================== */
+
+.boton-cerrar-modal {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #777777;
+    font-size: 20px;
+}
+
+
+.boton-cerrar-modal:hover {
+    background: #eeeeee;
+    color: #333333;
+}
+
+
+/* =====================================================
+   ENCABEZADO DEL MODAL
+===================================================== */
+
+.encabezado-modal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-right: 25px;
+}
+
+
+.encabezado-modal h2 {
+    margin: 0;
+    color: var(--verde-flecha);
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   ICONO DEL MODAL
+===================================================== */
+
+.icono-modal {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #e8f7f1;
+    color: var(--verde-flecha);
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+.contenido-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.contenido-modal label {
+    color: #555555;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.contenido-modal input {
+    width: 100%;
+    height: 46px;
+    padding: 0 14px;
+    box-sizing: border-box;
+    border: 1.5px solid #aaaaaa;
+    border-radius: 12px;
+    outline: none;
+    background: #ffffff;
+    color: #444444;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+
+.contenido-modal input:focus {
+    border-color: var(--verde-flecha);
+    box-shadow: 0 0 0 3px rgba(0, 128, 83, 0.12);
+}
+
+
+/* =====================================================
+   MENSAJE DE ERROR
+===================================================== */
+
+.mensaje-modal {
+    min-height: 18px;
+    margin: 0;
+    color: #d9534f;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   BOTONES DEL MODAL
+===================================================== */
+
+.botones-modal {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+
+.boton-modal {
+    width: 100%;
+    height: 45px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+
+/* Cancelar */
+
+.boton-modal.cancelar {
+    border: 1.5px solid #bbbbbb;
+    background: #ffffff;
+    color: #666666;
+}
+
+
+.boton-modal.cancelar:hover {
+    background: #f2f2f2;
+}
+
+
+/* Guardar */
+
+.boton-modal.guardar {
+    border: 1.5px solid var(--verde-flecha);
+    background: var(--verde-flecha);
+    color: #ffffff;
+}
+
+
+.boton-modal.guardar:hover {
+    background: var(--verde-flecha-oscuro);
+}
+
+
+/* =====================================================
+   MODAL DE FOTO
+===================================================== */
+
+.contenido-foto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+
+/* Vista previa */
+
+.vista-previa-foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--verde-flecha);
+    background: #eeeeee;
+}
+
+
+.vista-previa-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Botón seleccionar foto */
+
+.boton-seleccionar-foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    border: 1.5px solid var(--verde-flecha);
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--verde-flecha);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.boton-seleccionar-foto:hover {
+    background: #eaf8f3;
+}
+
+
+/* =====================================================
+   MODAL IDIOMA
+===================================================== */
+
+.opciones-idioma {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Opción */
+
+.opcion-idioma {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 50px;
+    padding: 0 14px;
+    box-sizing: border-box;
+    border: 1.5px solid #dddddd;
+    border-radius: 12px;
+    color: #555555;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.opcion-idioma:has(input:checked) {
+    border-color: var(--verde-flecha);
+    background: #eaf8f3;
+    color: var(--verde-flecha);
+}
+
+
+/* Radio original oculto */
+
+.opcion-idioma input {
+    position: absolute;
+    opacity: 0;
+}
+
+
+/* Radio personalizado */
+
+.radio-personalizado {
+    width: 19px;
+    height: 19px;
+    box-sizing: border-box;
+    border: 2px solid #999999;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+
+/* Radio seleccionado */
+
+.opcion-idioma input:checked
++ .radio-personalizado {
+    border: 5px solid var(--verde-flecha);
+}
+
+
+/* =====================================================
+   MODO OSCURO
+===================================================== */
+
+body.dark-mode .modal {
+    background: #242424;
+}
+
+body.dark-mode .contenido-modal label {
+    color: #eeeeee;
+}
+
+body.dark-mode   .contenido-modal input {
+    background: #263a34;
+    border-color: #55756a;
+    color: #ffffff;
+}
+
+body.dark-mode .boton-modal.cancelar {
+    background: #263a34;
+    border-color: #55756a;
+    color: #eeeeee;
+}
+
+body.dark-mode .opcion-idioma {
+    border-color: #55756a;
+    color: #eeeeee;
+}
+
+body.dark-mode .opcion-idioma:has(input:checked) {
+    background: #29463d;
+    border-color: var(--verde-flecha);
 }
