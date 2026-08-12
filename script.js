@@ -36,25 +36,77 @@ if (switchDark) {
     });
 }
 
+
 /* =====================================================
    MENÚ HAMBURGUESA
 ===================================================== */
+
 const btnMenu = document.getElementById("btnMenu");
 const sideMenu = document.getElementById("sideMenu");
 const overlay = document.getElementById("overlay");
+const bottomNav = document.querySelector(".bottom-nav");
 
-if (btnMenu && sideMenu && overlay) {
+if (btnMenu && sideMenu && overlay && bottomNav) {
+
     btnMenu.addEventListener("click", function (e) {
-        e.preventDefault();
-        sideMenu.classList.toggle("open");
-        overlay.classList.toggle("show");
-    });
+
+    e.preventDefault();
+
+    sideMenu.classList.toggle("open");
+    overlay.classList.toggle("show");
+    bottomNav.classList.toggle("menu-open");
+
+    /* Bloquear/desbloquear scroll de la página */
+    document.body.classList.toggle("menu-abierto");
+
+});
+
+
+    /* Cerrar menú al tocar fuera */
 
     overlay.addEventListener("click", function () {
+
         sideMenu.classList.remove("open");
         overlay.classList.remove("show");
+
+        /* Regresar al estado normal */
+        bottomNav.classList.remove("menu-open");
+
     });
+
 }
+
+
+/* =====================================================
+   DETECTAR PÁGINA ACTUAL
+===================================================== */
+
+const navItems = document.querySelectorAll(".bottom-nav .nav-item");
+
+const paginaActual = window.location.pathname
+    .split("/")
+    .pop()
+    .toLowerCase();
+
+
+navItems.forEach(item => {
+
+    const enlace = item.getAttribute("href");
+
+    if (!enlace || enlace === "#") {
+        return;
+    }
+
+    const paginaEnlace = enlace
+        .split("/")
+        .pop()
+        .toLowerCase();
+
+    if (paginaActual === paginaEnlace) {
+        item.classList.add("active");
+    }
+
+});
 
 /* =====================================================
    MODALES DE MI PERFIL

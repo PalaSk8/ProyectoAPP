@@ -99,68 +99,170 @@ body::before{
 }
 
 /* 2. CADA BOTÓN (Icono + Texto) */
+
+.bottom-nav {
+    .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: var(--verde-flecha);
+
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+
+    border-radius: 12px 12px 0 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 10px 0;
+
+    z-index: 1000;
+}
+
+}
+
+
+/* =====================================================
+   CADA BOTÓN
+===================================================== */
+
 .nav-item {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1; /* Hace que cada botón mida exactamente lo mismo de ancho */
+
+    flex: 1;
+
     text-decoration: none;
+
     color: #f3f5f8;
+
     font-size: 12px;
-    transition: color 0.3s ease;
+
+    transition: color 0.3s ease, transform 0.2s ease;
+
     -webkit-tap-highlight-color: transparent;
 }
 
-/* 3. TAMAÑO DE LOS ÍCONOS */
+
+/* =====================================================
+   ICONOS
+===================================================== */
+
 .nav-item svg {
     width: 24px;
     height: 24px;
+
     margin-bottom: 4px;
-    transition: transform 0.2s ease;
+
+    transition:
+        color 0.3s ease,
+        transform 0.2s ease;
 }
 
-/* 4. ESTADO ACTIVO (Cuando lo tocas) */
+/* =====================================================
+   MODO CLARO — NORMAL
+===================================================== */
+
 .nav-item.active {
-    color: #18181a; 
+    color: #18181a;
+}
+
+
+/* =====================================================
+   MODO OSCURO — NORMAL
+===================================================== */
+
+body.dark-mode .nav-item {
+    color: #18181a;
+}
+
+body.dark-mode .nav-item.active {
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   MENÚ HAMBURGUESA ABIERTO — MODO CLARO
+===================================================== */
+
+.bottom-nav.menu-open .nav-item {
+    color: #f3f5f8;
+}
+
+.bottom-nav.menu-open #btnMenu {
+    color: #18181a;
+}
+
+
+/* =====================================================
+   MENÚ HAMBURGUESA ABIERTO — MODO OSCURO
+===================================================== */
+
+body.dark-mode .bottom-nav.menu-open .nav-item {
+    color: #18181a;
+}
+
+body.dark-mode .bottom-nav.menu-open .nav-item.active {
+    color: #18181a;
+}
+
+body.dark-mode .bottom-nav.menu-open #btnMenu {
+    color: #ffffff;
 }
 
 /* menu hamburguesa  */
-#sideMenu{
-    position:fixed;
-    top:80px;
-    right:-330px;
-    width:300px;
-    height:calc(100% - 100px); /* deja espacio abajo */
-    
-    background:
-    linear-gradient(
+#sideMenu {
+    position: fixed;
+    top: 80px;
+    right: -330px;
+
+    width: 300px;
+    height: calc(100% - 100px);
+
+    background: linear-gradient(
         145deg,
-        rgba(11,122,83,.95),
-        rgba(5,80,55,.95)
+        rgba(11, 122, 83, .95),
+        rgba(5, 80, 55, .95)
     );
 
-    backdrop-filter:blur(15px);
-    border-radius:30px 0 0 30px;
-    box-shadow:-10px 0 40px rgba(0,0,0,.35);
-    transition:.45s cubic-bezier(.68,-0.55,.27,1.55);
-    z-index:999;
+    backdrop-filter: blur(15px);
 
-    overflow-y:auto; /* 👈 activa scroll vertical */
-    overflow-x:auto;
+    border-radius: 30px 0 0 30px;
+
+    box-shadow: -10px 0 40px rgba(0, 0, 0, .35);
+
+    transition: .45s cubic-bezier(.68, -0.55, .27, 1.55);
+
+    z-index: 999;
+
+    /* EL MENÚ SÍ PUEDE HACER SCROLL */
+    overflow-y: auto;
+
+    /* Evita scroll horizontal */
+    overflow-x: hidden;
+
+    /* Permite que el scroll del menú sea independiente */
+    overscroll-behavior: contain;
+
+    /* Mejora el scroll en móviles */
+    -webkit-overflow-scrolling: touch;
 }
 
-#sideMenu > .menu-profile,
-#sideMenu > .menu-options {
-    display: block;
+body.menu-abierto {
+    overflow: hidden;
 }
 
-/* cuando abre */
-#sideMenu.open{
-    right:-60px;
+/* Cuando abre */
+
+#sideMenu.open {
+    right: -60px;
 }
-
-
 
 /* fondo oscuro */
 
@@ -190,6 +292,7 @@ body::before{
     gap:15px;
     padding:30px 20px;
     color:white;
+    margin-bottom: 5px;
 }
 
 
@@ -201,8 +304,7 @@ body::before{
     display:flex;
     align-items:center;
     justify-content:center;
-    background:white;
-    color:#0b7a53;
+    background:var(--verde-flecha);
     font-size:30px;
     box-shadow:
     0 5px 20px rgba(0,0,0,.3);
@@ -212,6 +314,7 @@ body::before{
 .menu-profile h3{
     margin:0;
     font-size:20px;
+    margin-top: 10px;
 }
 
 
@@ -257,7 +360,7 @@ body::before{
     justify-content:center;
     border-radius:50%;
     background:white;
-    color:#0b7a53;
+    color:var(--verde-flecha);
     font-size:15px;
 }
 
