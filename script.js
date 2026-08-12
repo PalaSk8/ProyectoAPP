@@ -809,3 +809,31 @@ if (btnVolverInicio) {
         window.location.href = 'compra.html';
     });
 }
+
+
+
+function mostrarViajes(tipo) {
+    const proximos = document.getElementById("proximos");
+    const finalizados = document.getElementById("finalizados");
+    const btnProximos = document.getElementById("btnProximos");
+    const btnFinalizados = document.getElementById("btnFinalizados");
+
+    if (tipo === "proximos") {
+        proximos.style.display = "block";
+        finalizados.style.display = "none";
+
+        btnProximos.classList.add("activa");
+        btnFinalizados.classList.remove("activa");
+    } 
+    else {
+        proximos.style.display = "none";
+        finalizados.style.display = "block";
+
+        btnFinalizados.classList.add("activa");
+        btnProximos.classList.remove("activa");
+    }
+}
+
+/* Al cargar la página mostramos Próximos */
+
+mostrarViajes("proximos");
