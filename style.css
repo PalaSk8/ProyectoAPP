@@ -1476,9 +1476,10 @@ h2{
 /* Ruta visual con iconos de bus */
 .ruta-visual {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 20px;
+    gap: 10px;
 }
 
 .ruta-punto {
@@ -1489,6 +1490,9 @@ h2{
     font-weight: 700;
     color: #333;
     font-size: 0.9rem;
+    width: 90px;          /* ancho fijo: ambos círculos quedan alineados igual */
+    flex-shrink: 0;
+    text-align: center;
 }
 
 .ruta-punto i {
@@ -1508,8 +1512,7 @@ h2{
     flex: 1;
     height: 2px;
     background: repeating-linear-gradient(90deg, var(--verde-flecha) 0 8px, transparent 8px 14px);
-    margin: 0 10px;
-    margin-bottom: 22px;
+    margin-top: 20px;     /* centrado con el círculo, no con el texto */
 }
 
 /* Tarjeta de detalles */
@@ -2976,3 +2979,253 @@ body.dark-mode .opcion-idioma:has(input:checked) {
     font-size: 12px;
 }
 
+/* ===== Chips de pasajeros guardados ===== */
+.pasajeros-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 26px;
+}
+
+.pasajero-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1.5px solid var(--gris-borde);
+    border-radius: 30px;
+    padding: 6px 14px 6px 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.pasajero-chip:active {
+    transform: scale(0.97);
+}
+
+.pasajero-chip .chip-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--verde-flecha);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.pasajero-chip.seleccionado {
+    background: linear-gradient(135deg, var(--verde-flecha), var(--verde-flecha-oscuro));
+    border-color: var(--verde-flecha-oscuro);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(11,122,83,0.3);
+}
+
+.pasajero-chip.seleccionado .chip-avatar {
+    background: #fff;
+    color: var(--verde-flecha);
+}
+
+/* Chip "Agregar" con borde punteado */
+.chip-agregar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1.5px dashed var(--rojo-flecha);
+    border-radius: 30px;
+    padding: 8px 16px;
+    color: var(--rojo-flecha);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.chip-agregar:active {
+    transform: scale(0.97);
+}
+
+.chip-agregar i {
+    font-size: 0.75rem;
+}
+/* ===== Caja de puntos Flechamigo ===== */
+.caja-puntos {
+    background: #eaf7f0;
+    border: 1.5px solid #b7e4cb;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+}
+
+.puntos-fila {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.puntos-fila i {
+    font-size: 1.3rem;
+    color: var(--verde-flecha);
+}
+
+.puntos-fila strong {
+    color: var(--verde-flecha);
+}
+
+.puntos-nota {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.puntos-nota i {
+    color: var(--rojo-flecha);
+    margin-top: 2px;
+}
+
+.puntos-link {
+    display: inline-block;
+    color: var(--verde-flecha);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: underline;
+}
+/* ===== Tarjetas de método de pago ===== */
+.metodos-pago {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.metodo-card {
+    flex: 1;
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: 2px solid transparent;
+}
+
+.metodo-card:active {
+    transform: scale(0.98);
+}
+
+.metodo-check {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.metodo-check i {
+    font-size: 0.65rem;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.metodo-card.activa {
+    background: linear-gradient(135deg, var(--verde-flecha), var(--verde-flecha-oscuro));
+    border-color: var(--verde-flecha-oscuro);
+    box-shadow: 0 8px 20px rgba(11,122,83,0.35);
+}
+
+.metodo-card.activa .metodo-check {
+    background: #2fae6f;
+    border-color: #fff;
+}
+
+.metodo-card.activa .metodo-check i {
+    opacity: 1;
+}
+
+.metodo-logos {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.metodo-logos i {
+    font-size: 1.6rem;
+    color: #555;
+}
+
+.metodo-card.activa .metodo-logos i {
+    color: #fff;
+}
+
+.metodo-banner {
+    background: linear-gradient(135deg, #0d2b3e, #1a4a63);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 14px 12px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    text-decoration: underline;
+    text-decoration-color: rgba(255,255,255,0.4);
+}
+
+.metodo-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,0,0,0.04);
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.metodo-card.activa .metodo-info {
+    background: rgba(255,255,255,0.15);
+}
+
+.metodo-info i {
+    font-size: 1.1rem;
+    color: var(--verde-flecha);
+}
+
+.metodo-card.activa .metodo-info i {
+    color: #fff;
+}
+
+.metodo-info strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.metodo-card.activa .metodo-info strong {
+    color: #fff;
+}
+
+.metodo-info span {
+    font-size: 0.72rem;
+    color: #777;
+}
+
+.metodo-card.activa .metodo-info span {
+    color: rgba(255,255,255,0.85);
+}
