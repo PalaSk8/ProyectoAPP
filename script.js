@@ -630,7 +630,7 @@ if (nombreSaludoEl) {
     nombreSaludoEl.textContent = nombreUsuarioActivo;
 }
 
-/* Botón Buscar Boletos - flujo usuario registrado (compra1.html) */
+/* Botón Buscar Boletos - flujo usuario registrado (compra.html) */
 const btnBuscarBoletosUser = document.getElementById('btnBuscarBoletosUser');
 if (btnBuscarBoletosUser) {
     btnBuscarBoletosUser.addEventListener('click', () => {
