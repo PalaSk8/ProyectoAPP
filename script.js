@@ -568,3 +568,192 @@ function irAPaso(numeroPaso) {
 
 window.addEventListener('load', actualizarStepper);
 window.addEventListener('resize', actualizarStepper);
+
+/* Saludo con nombre (usuario registrado) */
+const nombreSaludoEl = document.getElementById('nombreSaludo');
+if (nombreSaludoEl) {
+    // TODO: cuando exista login real, reemplazar esto por:
+    // const nombreUsuarioActivo = localStorage.getItem('usuarioNombre') || "Usuario";
+    const nombreUsuarioActivo = "Pedro"; // valor simulado
+    nombreSaludoEl.textContent = nombreUsuarioActivo;
+}
+
+/* Botón Buscar Boletos - flujo usuario registrado (compra1.html) */
+const btnBuscarBoletosUser = document.getElementById('btnBuscarBoletosUser');
+if (btnBuscarBoletosUser) {
+    btnBuscarBoletosUser.addEventListener('click', () => {
+        const origen = document.querySelector('#btnOrigen span')?.textContent || "";
+        const destino = document.querySelector('#btnDestino span')?.textContent || "";
+        const fechaSalida = document.querySelector('#fechaSalida .fecha-texto')?.textContent || "";
+        const adultos = document.querySelectorAll('.contador')[0]?.querySelector('.contador-valor')?.textContent || "1";
+        const ninos = document.querySelectorAll('.contador')[1]?.querySelector('.contador-valor')?.textContent || "0";
+        const inapam = document.querySelectorAll('.contador')[2]?.querySelector('.contador-valor')?.textContent || "0";
+
+        const totalPasajeros = parseInt(adultos) + parseInt(ninos) + parseInt(inapam);
+
+        const compra = JSON.parse(localStorage.getItem('flechaRojaCompra')) || {};
+        compra.origen = origen;
+        compra.destino = destino;
+        compra.fechaSalida = fechaSalida;
+        compra.totalPasajeros = totalPasajeros;
+        localStorage.setItem('flechaRojaCompra', JSON.stringify(compra));
+
+        window.location.href = 'compra2.html';
+    });
+}
+/* =====================================================
+   PASO 2 USUARIO REGISTRADO (compra2.html) - Chips de pasajeros
+===================================================== */
+const pasajerosChipsEl = document.getElementById('pasajerosChips');
+const chipAgregarPasajero = document.getElementById('chipAgregarPasajero');
+
+if (pasajerosChipsEl && chipAgregarPasajero) {
+
+    // TODO: cuando exista la sección "Mis pasajeros" real, reemplazar esto por:
+    // const misPasajeros = JSON.parse(localStorage.getItem('misPasajeros')) || [];
+    const misPasajeros = [
+        { nombre: "José Méndez" },
+        { nombre: "Luz Méndez" }
+    ]; // datos simulados por ahora
+
+    let pasajeroSeleccionado = null;
+
+    function iniciales(nombre) {
+        return nombre.split(" ").map(p => p[0]).join("").substring(0, 2).toUpperCase();
+    }
+
+    misPasajeros.forEach(pasajero => {
+        const chip = document.createElement('div');
+        chip.className = 'pasajero-chip';
+        chip.innerHTML = `<span class="chip-avatar">${iniciales(pasajero.nombre)}</span>${pasajero.nombre}`;
+
+        chip.addEventListener('click', () => {
+            document.querySelectorAll('.pasajero-chip').forEach(c => c.classList.remove('seleccionado'));
+            chip.classList.add('seleccionado');
+            pasajeroSeleccionado = pasajero.nombre;
+        });
+
+        // insertamos cada chip ANTES del botón "Agregar", que siempre queda al final
+        pasajerosChipsEl.insertBefore(chip, chipAgregarPasajero);
+    });
+
+    // Si no hay pasajeros guardados, el chip "Agregar" ya queda visible solo
+    // (no hace falta lógica extra: el <a href="mispasajeros.html"> ya redirige siempre)
+
+    window.obtenerPasajeroSeleccionado = () => pasajeroSeleccionado;
+}
+
+/* Botón Continuar (compra2.html) */
+const btnContinuarUser = document.getElementById('btnContinuarUser');
+if (btnContinuarUser) {
+    btnContinuarUser.addEventListener('click', () => {
+        const horaSeleccionada = horaSalidaTexto ? horaSalidaTexto.textContent : "";
+        const nombrePasajero = window.obtenerPasajeroSeleccionado ? window.obtenerPasajeroSeleccionado() : null;
+
+        if (!nombrePasajero) {
+            alert("Por favor selecciona un pasajero o agrega uno nuevo.");
+            return;
+        }
+
+        const compra = JSON.parse(localStorage.getItem('flechaRojaCompra')) || {};
+        compra.horaSalida = horaSeleccionada;
+        compra.nombrePasajero = nombrePasajero;
+        localStorage.setItem('flechaRojaCompra', JSON.stringify(compra));
+
+        window.location.href = 'compra3.html';
+    });
+}
+/* =====================================================
+   PASO 3 USUARIO REGISTRADO (compra3.html)
+===================================================== */
+const metodosPagoUser = document.querySelectorAll('.metodo-card');
+const camposTarjeta = document.getElementById('camposTarjeta');
+const cajaPuntos = document.getElementById('cajaPuntos');
+
+if (metodosPagoUser.length > 0 && camposTarjeta && cajaPuntos) {
+
+    function actualizarVistaMetodo(metodo) {
+        if (metodo === 'flechamigo') {
+            camposTarjeta.style.display = 'none';
+            cajaPuntos.style.display = 'block';
+        } else {
+            camposTarjeta.style.display = 'block';
+            cajaPuntos.style.display = 'none';
+        }
+    }
+
+    metodosPagoUser.forEach(card => {
+        card.addEventListener('click', () => {
+            metodosPagoUser.forEach(c => c.classList.remove('activa'));
+            card.classList.add('activa');
+            actualizarVistaMetodo(card.dataset.metodo);
+        });
+    });
+
+    // Estado inicial: el que ya tenga la clase "activa" en el HTML
+    const metodoInicial = document.querySelector('.metodo-card.activa');
+    if (metodoInicial) {
+        actualizarVistaMetodo(metodoInicial.dataset.metodo);
+    }
+}
+
+// Link "Ir a Mis Puntos" dentro de la caja de puntos
+const linkIrPuntos = document.getElementById('linkIrPuntos');
+if (linkIrPuntos) {
+    linkIrPuntos.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = 'misPuntos.html';
+    });
+}
+
+/* Botón Pagar (compra3.html) */
+const btnPagarUser = document.getElementById('btnPagarUser');
+const btnCancelarUser = document.getElementById('btnCancelarUser');
+
+if (btnPagarUser) {
+    btnPagarUser.addEventListener('click', () => {
+        const nombre = document.getElementById('nombreComprador').value.trim();
+        const telefono = document.getElementById('telefonoComprador').value.trim();
+        const correo = document.getElementById('correoComprador').value.trim();
+        const metodoActivo = document.querySelector('.metodo-card.activa')?.dataset.metodo || "tarjeta";
+
+        if (!nombre || !telefono || !correo) {
+            alert("Por favor completa tus datos.");
+            return;
+        }
+
+        if (metodoActivo === 'tarjeta') {
+            const numeroTarjeta = document.getElementById('numeroTarjeta').value.trim();
+            const fechaExp = document.getElementById('fechaExpiracion').value.trim();
+            const cvv = document.getElementById('cvv').value.trim();
+            const titular = document.getElementById('titularTarjeta').value.trim();
+
+            if (!numeroTarjeta || !fechaExp || !cvv || !titular) {
+                alert("Por favor completa los datos de tu tarjeta.");
+                return;
+            }
+        }
+
+        const compra = JSON.parse(localStorage.getItem('flechaRojaCompra')) || {};
+        compra.nombreComprador = nombre;
+        compra.correoComprador = correo;
+        compra.metodoPago = metodoActivo;
+        localStorage.setItem('flechaRojaCompra', JSON.stringify(compra));
+
+        window.location.href = 'compra4.html';
+    });
+}
+
+if (btnCancelarUser) {
+    btnCancelarUser.addEventListener('click', () => {
+        window.location.href = 'compra2.html';
+    });
+}
+
+const btnVolverInicio = document.getElementById('btnVolverInicio');
+if (btnVolverInicio) {
+    btnVolverInicio.addEventListener('click', () => {
+        localStorage.removeItem('flechaRojaCompra');
+        window.location.href = 'compra.html';
+    });
+}

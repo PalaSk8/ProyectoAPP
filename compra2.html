@@ -3,218 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>compra</title>
+    <title>Detalle del viaje</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="style.css">
 </head>
-<!-- header con logo al centro y flecha de retroceso -->
 <body>
     <header class="header">
         <i class="fa-solid fa-chevron-left" onclick="window.location.href='compra1.html'"></i>
-
         <div class="logo">
             <img id="logo" src="img/logo blanco.png" alt="Logo">
         </div>
-
         <div class="header-icons">
-
-            <!--  icono perfil -->
             <a href="miperfil.html">
                 <i class="fa-solid fa-circle-user"></i>
             </a>
-
-            <!-- Switch modo oscuro -->
             <label class="switch">
                 <input type="checkbox" id="darkMode">
             </label>
-
         </div>
     </header>
 
     <main class="contenido">
 
-        <h2 class="titulo-pregunta">Hola <span id="nombreSaludo">Usuario</span>, ¿A dónde viajas?</h2>
+        <h2 class="titulo-pregunta titulo-italic">Detalle del viaje</h2>
 
-        <!-- Stepper con 4 puntos y camión -->
-        <div class="stepper" data-paso-actual="1">
+        <div class="stepper" data-paso-actual="2">
             <span class="stepper-linea"></span>
             <div class="stepper-puntos">
-                <span class="stepper-punto activo" data-paso="1"></span>
-                <span class="stepper-punto" data-paso="2"></span>
+                <span class="stepper-punto completado" data-paso="1"></span>
+                <span class="stepper-punto activo" data-paso="2"></span>
                 <span class="stepper-punto" data-paso="3"></span>
                 <span class="stepper-punto" data-paso="4"></span>
             </div>
             <img src="img/autobús.png" alt="camión" class="stepper-bus" id="stepperBus">
         </div>
 
-        <!-- Origen y Destino -->
-        <div class="campos-viaje">
-            <div class="campo-origen-destino">
+        <p class="ruta-texto">Origen-Destino</p>
 
-                <div class="campo-wrapper">
-                    <button class="campo-btn origen" id="btnOrigen">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Origen</span>
-                        <i class="fa-solid fa-chevron-down flecha"></i>
-                    </button>
-                    <ul class="lista-destinos" id="listaOrigen"></ul>
-                </div>
-
-                <div class="campo-wrapper">
-                    <button class="campo-btn destino" id="btnDestino">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Destino</span>
-                        <i class="fa-solid fa-chevron-down flecha"></i>
-                    </button>
-                    <ul class="lista-destinos" id="listaDestino"></ul>
-                </div>
-
+        <!-- Resumen: salida / duración / llegada -->
+        <div class="resumen-viaje">
+            <div class="resumen-item" id="resumenSalida">
+                <span class="resumen-label">Salida</span>
+                <span class="resumen-valor">
+                    <span id="horaSalidaTexto">10:00 AM</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </span>
+                <ul class="lista-fechas lista-horas-resumen" id="listaHorasResumen"></ul>
             </div>
-
-            <button class="btn-swap" id="btnSwap" title="Intercambiar origen y destino">
-                <i class="fa-solid fa-right-left"></i>
-            </button>
+            <div class="resumen-divisor"></div>
+            <div class="resumen-item">
+                <span class="resumen-label">Duración</span>
+                <span class="resumen-valor">4:00 hrs</span>
+            </div>
+            <div class="resumen-divisor"></div>
+            <div class="resumen-item">
+                <span class="resumen-label">Llegada</span>
+                <span class="resumen-valor">2:00 PM</span>
+            </div>
         </div>
 
-        <!-- Fechas -->
-        <p class="label-seccion">¿Cuándo viajas?</p>
-        <div class="fechas">
-
-            <div class="campo-wrapper fecha-wrapper">
-                <button class="fecha-btn" id="fechaSalida">
-                    <i class="fa-regular fa-calendar"></i>
-                    <span class="fecha-texto">Fecha de Salida</span>
-                </button>
-                <ul class="lista-fechas" id="listaFechaSalida"></ul>
+        <!-- Itinerario -->
+        <p class="label-seccion">Itinerario</p>
+        <div class="itinerario">
+            <div class="itinerario-duracion">
+                Duración<br>del viaje<br>aproximado<br><strong>4:00 hrs</strong>
             </div>
-
-            <div class="campo-wrapper fecha-wrapper">
-                <button class="fecha-btn" id="fechaRegreso">
-                    <i class="fa-regular fa-calendar"></i>
-                    <span class="fecha-texto">Regreso (Opcional)</span>
-                </button>
-                <ul class="lista-fechas" id="listaFechaRegreso"></ul>
-            </div>
-
-        </div>
-
-        <!-- Pasajeros -->
-        <div class="pasajeros">
-            <div class="pasajero-fila">
-                <span class="pasajero-label">Adultos</span>
-                <div class="contador" data-min="1" data-max="9" data-valor="1">
-                    <button class="contador-btn menos">-</button>
-                    <span class="contador-valor">1</span>
-                    <button class="contador-btn mas">+</button>
+            <div class="itinerario-timeline">
+                <span class="itinerario-bus-icono"><i class="fa-solid fa-bus"></i></span>
+                <div class="itinerario-punto">
+                    <span class="punto-rojo"></span>
+                    <span class="lugar-label">Lugar</span>
                 </div>
-            </div>
-
-            <div class="pasajero-fila">
-                <span class="pasajero-label">Niños</span>
-                <div class="contador" data-min="0" data-max="9" data-valor="0">
-                    <button class="contador-btn menos">-</button>
-                    <span class="contador-valor">0</span>
-                    <button class="contador-btn mas">+</button>
+                <div class="itinerario-punto">
+                    <span class="punto-rojo"></span>
+                    <span class="lugar-label">Lugar</span>
                 </div>
-            </div>
-
-            <div class="pasajero-fila">
-                <span class="pasajero-label">INAPAM</span>
-                <div class="contador" data-min="0" data-max="9" data-valor="0">
-                    <button class="contador-btn menos">-</button>
-                    <span class="contador-valor">0</span>
-                    <button class="contador-btn mas">+</button>
+                <div class="itinerario-punto">
+                    <span class="punto-rojo"></span>
+                    <span class="lugar-label">Lugar</span>
                 </div>
             </div>
         </div>
 
-        <a href="mispasajeros.html">
-            <i class="fa-solid fa-users"></i>
-            <span>Mis pasajeros</span>
-        </a>
+        <!-- Servicios -->
+        <p class="label-seccion">Servicios</p>
+        <div class="servicios">
+            <div class="servicio-item">
+                <i class="fa-solid fa-wifi"></i>
+                <span>Wifi</span>
+            </div>
+            <div class="servicio-item">
+                <i class="fa-solid fa-restroom"></i>
+                <span>Sanitarios</span>
+            </div>
+            <div class="servicio-item">
+                <i class="fa-solid fa-tv"></i>
+                <span>Pantalla</span>
+            </div>
+        </div>
 
-        <a href="misviajes.html">
-            <i class="fa-solid fa-bus"></i>
-            <span>Mis viajes</span>
-        </a>
+        <!-- Pasajeros guardados -->
+        <p class="label-seccion">¿Quiénes viajan?</p>
+        <p class="pasajero-numero">Mis pasajeros</p>
 
-        <a href="puntosf.html">
-            <i class="fa-solid fa-star"></i>
-            <span>Puntos Flechamigo</span>
-        </a>
-        <button class="btn-estilo" id="btnBuscarBoletosUser">Buscar Boletos</button>
+        <div class="pasajeros-chips" id="pasajerosChips">
+            <!-- Los chips de pasajeros guardados se generan aquí por JS -->
+            <a href="mispasajeros.html" class="chip-agregar" id="chipAgregarPasajero">
+                <i class="fa-solid fa-plus"></i>
+                Agregar
+            </a>
+        </div>
+
+        <button class="btn-buscar" id="btnContinuarUser">Continuar</button>
 
     </main>
 
     <!-- Menú lateral -->
     <div id="overlay"></div>
     <div id="sideMenu">
-
         <div class="menu-profile">
             <div class="avatar">
                 <i class="fa-solid fa-user"></i>
             </div>
-
             <div>
                 <h3 id="nombreUsuario">Usuario</h3>
             </div>
         </div>
 
-        <a href="https://play.google.com/store/apps/details?id=mx.com.stgt.autobuses.flecharoja">
-            <i class="fa-solid fa-heart"></i>
-            <span>Califica nuestra app</span>
-        </a>
-
-        <a href="acercade.html">
-            <i class="fa-solid fa-circle-info"></i>
-            <span>Acerca de</span>
-        </a>
         <div class="menu-options">
-
             <a href="miperfil.html">
                 <i class="fa-solid fa-user"></i>
                 <span>Mi perfil</span>
             </a>
-
-            <a href="#">
+            <a href="mispasajeros.html">
                 <i class="fa-solid fa-users"></i>
                 <span>Mis pasajeros</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-bus"></i>
                 <span>Mis viajes</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-star"></i>
                 <span>Puntos Flechamigo</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-circle-play"></i>
                 <span>Tutorial</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-building"></i>
                 <span>Nuestra historia</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-heart"></i>
                 <span>Califica nuestra app</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-circle-info"></i>
                 <span>Acerca de</span>
             </a>
-
         </div>
-
     </div>
 
     <nav class="bottom-nav">
@@ -246,8 +196,7 @@
             <span></span>
         </a>
         <a href="#" class="nav-item" id="btnMenu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -256,7 +205,5 @@
     </nav>
 
 </body>
-
 <script src="script.js"></script>
-
 </html>

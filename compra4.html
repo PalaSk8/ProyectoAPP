@@ -3,218 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>compra</title>
+    <title>Detalles de compra</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="style.css">
 </head>
-<!-- header con logo al centro y flecha de retroceso -->
-<body>
+<body data-flujo="registrado">
     <header class="header">
-        <i class="fa-solid fa-chevron-left" onclick="window.location.href='compra1.html'"></i>
-
+        <i class="fa-solid fa-chevron-left" onclick="window.location.href='compra3.html'"></i>
         <div class="logo">
             <img id="logo" src="img/logo blanco.png" alt="Logo">
         </div>
-
         <div class="header-icons">
-
-            <!--  icono perfil -->
             <a href="miperfil.html">
                 <i class="fa-solid fa-circle-user"></i>
             </a>
-
-            <!-- Switch modo oscuro -->
             <label class="switch">
                 <input type="checkbox" id="darkMode">
             </label>
-
         </div>
     </header>
 
     <main class="contenido">
 
-        <h2 class="titulo-pregunta">Hola <span id="nombreSaludo">Usuario</span>, ¿A dónde viajas?</h2>
+        <h2 class="titulo-pregunta titulo-italic">Detalles de compra</h2>
 
-        <!-- Stepper con 4 puntos y camión -->
-        <div class="stepper" data-paso-actual="1">
+        <!-- Stepper: los 4 puntos completos -->
+        <div class="stepper" data-paso-actual="4">
             <span class="stepper-linea"></span>
             <div class="stepper-puntos">
-                <span class="stepper-punto activo" data-paso="1"></span>
-                <span class="stepper-punto" data-paso="2"></span>
-                <span class="stepper-punto" data-paso="3"></span>
-                <span class="stepper-punto" data-paso="4"></span>
+                <span class="stepper-punto completado" data-paso="1"></span>
+                <span class="stepper-punto completado" data-paso="2"></span>
+                <span class="stepper-punto completado" data-paso="3"></span>
+                <span class="stepper-punto activo" data-paso="4"></span>
             </div>
             <img src="img/autobús.png" alt="camión" class="stepper-bus" id="stepperBus">
         </div>
 
-        <!-- Origen y Destino -->
-        <div class="campos-viaje">
-            <div class="campo-origen-destino">
-
-                <div class="campo-wrapper">
-                    <button class="campo-btn origen" id="btnOrigen">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Origen</span>
-                        <i class="fa-solid fa-chevron-down flecha"></i>
-                    </button>
-                    <ul class="lista-destinos" id="listaOrigen"></ul>
-                </div>
-
-                <div class="campo-wrapper">
-                    <button class="campo-btn destino" id="btnDestino">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Destino</span>
-                        <i class="fa-solid fa-chevron-down flecha"></i>
-                    </button>
-                    <ul class="lista-destinos" id="listaDestino"></ul>
-                </div>
-
+        <!-- Ruta con iconos de bus -->
+        <div class="ruta-visual">
+            <div class="ruta-punto">
+                <i class="fa-solid fa-bus"></i>
+                <span id="rutaOrigen">Origen</span>
             </div>
-
-            <button class="btn-swap" id="btnSwap" title="Intercambiar origen y destino">
-                <i class="fa-solid fa-right-left"></i>
-            </button>
-        </div>
-
-        <!-- Fechas -->
-        <p class="label-seccion">¿Cuándo viajas?</p>
-        <div class="fechas">
-
-            <div class="campo-wrapper fecha-wrapper">
-                <button class="fecha-btn" id="fechaSalida">
-                    <i class="fa-regular fa-calendar"></i>
-                    <span class="fecha-texto">Fecha de Salida</span>
-                </button>
-                <ul class="lista-fechas" id="listaFechaSalida"></ul>
-            </div>
-
-            <div class="campo-wrapper fecha-wrapper">
-                <button class="fecha-btn" id="fechaRegreso">
-                    <i class="fa-regular fa-calendar"></i>
-                    <span class="fecha-texto">Regreso (Opcional)</span>
-                </button>
-                <ul class="lista-fechas" id="listaFechaRegreso"></ul>
-            </div>
-
-        </div>
-
-        <!-- Pasajeros -->
-        <div class="pasajeros">
-            <div class="pasajero-fila">
-                <span class="pasajero-label">Adultos</span>
-                <div class="contador" data-min="1" data-max="9" data-valor="1">
-                    <button class="contador-btn menos">-</button>
-                    <span class="contador-valor">1</span>
-                    <button class="contador-btn mas">+</button>
-                </div>
-            </div>
-
-            <div class="pasajero-fila">
-                <span class="pasajero-label">Niños</span>
-                <div class="contador" data-min="0" data-max="9" data-valor="0">
-                    <button class="contador-btn menos">-</button>
-                    <span class="contador-valor">0</span>
-                    <button class="contador-btn mas">+</button>
-                </div>
-            </div>
-
-            <div class="pasajero-fila">
-                <span class="pasajero-label">INAPAM</span>
-                <div class="contador" data-min="0" data-max="9" data-valor="0">
-                    <button class="contador-btn menos">-</button>
-                    <span class="contador-valor">0</span>
-                    <button class="contador-btn mas">+</button>
-                </div>
+            <span class="ruta-linea"></span>
+            <div class="ruta-punto">
+                <i class="fa-solid fa-bus"></i>
+                <span id="rutaDestino">Destino</span>
             </div>
         </div>
 
-        <a href="mispasajeros.html">
-            <i class="fa-solid fa-users"></i>
-            <span>Mis pasajeros</span>
-        </a>
+        <!-- Detalles del viaje -->
+        <div class="detalle-compra">
 
-        <a href="misviajes.html">
-            <i class="fa-solid fa-bus"></i>
-            <span>Mis viajes</span>
-        </a>
+            <p class="detalle-fila-titulo">Fecha y hora de salida</p>
+            <div class="detalle-fila">
+                <span id="detalleFecha">--/--/----</span>
+                <span id="detalleHora">-- : --</span>
+            </div>
 
-        <a href="puntosf.html">
-            <i class="fa-solid fa-star"></i>
-            <span>Puntos Flechamigo</span>
-        </a>
-        <button class="btn-estilo" id="btnBuscarBoletosUser">Buscar Boletos</button>
+            <p class="detalle-fila-titulo">Número de pasajeros</p>
+            <p class="detalle-valor" id="detalleTotalPasajeros">1</p>
+
+            <p class="detalle-fila-titulo">Pasajero 1</p>
+            <div class="cajas caja-solo-lectura">
+                <span id="detalleNombrePasajero">Nombre del pasajero</span>
+            </div>
+
+            <div class="detalle-fila detalle-fila-simple">
+                <span>Duración del viaje</span>
+                <span id="detalleDuracion">4:00 hrs</span>
+            </div>
+
+            <div class="detalle-seguro">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Seguro de viaje</span>
+            </div>
+
+            <p class="detalle-nota">
+                Conserva tu boleto para cualquier reclamo, situación que pueda ocurrir en tu transcurso de viaje.
+            </p>
+
+        </div>
+
+        <h3 class="detalle-gracias">¡Listo, gracias por tu compra!!</h3>
+        <p class="detalle-instruccion">
+            Puedes pasar a taquilla directo solo con tu código QR.
+        </p>
+
+        <!-- QR -->
+        <div class="qr-contenedor">
+            <img id="qrBoleto" src="" alt="Código QR del boleto">
+        </div>
+
+        <button class="btn-buscar" id="btnDescargarBoleto">Descargar boleto</button>
+        <button class="btn-cancelar" id="btnVolverInicio">Volver al inicio</button>
 
     </main>
 
     <!-- Menú lateral -->
     <div id="overlay"></div>
     <div id="sideMenu">
-
         <div class="menu-profile">
             <div class="avatar">
                 <i class="fa-solid fa-user"></i>
             </div>
-
             <div>
                 <h3 id="nombreUsuario">Usuario</h3>
             </div>
         </div>
 
-        <a href="https://play.google.com/store/apps/details?id=mx.com.stgt.autobuses.flecharoja">
-            <i class="fa-solid fa-heart"></i>
-            <span>Califica nuestra app</span>
-        </a>
-
-        <a href="acercade.html">
-            <i class="fa-solid fa-circle-info"></i>
-            <span>Acerca de</span>
-        </a>
         <div class="menu-options">
-
             <a href="miperfil.html">
                 <i class="fa-solid fa-user"></i>
                 <span>Mi perfil</span>
             </a>
-
-            <a href="#">
+            <a href="mispasajeros.html">
                 <i class="fa-solid fa-users"></i>
                 <span>Mis pasajeros</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-bus"></i>
                 <span>Mis viajes</span>
             </a>
-
-            <a href="#">
+            <a href="misPuntos.html">
                 <i class="fa-solid fa-star"></i>
                 <span>Puntos Flechamigo</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-circle-play"></i>
                 <span>Tutorial</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-building"></i>
                 <span>Nuestra historia</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-heart"></i>
                 <span>Califica nuestra app</span>
             </a>
-
             <a href="#">
                 <i class="fa-solid fa-circle-info"></i>
                 <span>Acerca de</span>
             </a>
-
         </div>
-
     </div>
 
     <nav class="bottom-nav">
@@ -246,8 +178,7 @@
             <span></span>
         </a>
         <a href="#" class="nav-item" id="btnMenu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -256,7 +187,5 @@
     </nav>
 
 </body>
-
 <script src="script.js"></script>
-
 </html>
