@@ -3711,3 +3711,276 @@ body.dark-mode .redes-acerca h2 {
 body.dark-mode .redes-acerca a {
     color: var(--verde-flecha);
 }
+
+
+/* =====================================================
+   PUNTOS FLECHAMIGO
+===================================================== */
+
+
+.tarjeta-puntos {
+    padding: 0;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   FILA DE PUNTOS
+===================================================== */
+
+.fila-puntos {
+    min-height: 125px;
+    border-bottom: none;
+    padding: 12px 14px;
+}
+
+
+
+/* "Mis puntos:" / "Saldo..." */
+
+.puntos-encabezado span {
+    color: var(--verde-flecha);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* "Tienes: 0 puntos" / "$300" */
+
+.puntos-encabezado strong {
+    color: var(--rojo-flecha);
+    font-size: 17px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   INFORMACIÓN
+===================================================== */
+
+.puntos-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+
+.puntos-info i {
+    flex-shrink: 0;
+    color: var(--rojo-flecha);
+    font-size: 18px;
+    margin-top: 1px;
+}
+
+
+.puntos-info small {
+    color: black;
+    line-height: 1.35;
+}
+
+
+/* =====================================================
+   ICONOS DE LA TARJETA
+===================================================== */
+
+.tarjeta-puntos .icono-opcion {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    font-size: 25px;
+}
+
+
+/* =====================================================
+   IMAGEN FLECHABUS
+===================================================== */
+
+.imagen-puntos {
+    width: 58px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 25px;
+}
+
+.boton-recargar,
+.boton-usar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 18px 20px;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    text-decoration: none;
+    box-sizing: border-box;
+    border: 2px solid var(--verde-flecha);
+}
+
+/* Icono izquierdo */
+.boton-recargar > i:first-child,
+.boton-usar > i:first-child {
+    font-size: 20px;
+    color: var(--verde-flecha);
+    width: 45px;
+}
+
+/* Texto */
+.boton-recargar span,
+.boton-usar span {
+    flex: 1;
+    font-weight: 600;
+}
+
+/* Flecha derecha */
+.flecha-recargar,
+.flecha-usar {
+    color: var(--verde-flecha);
+}
+
+
+/* =====================================================
+   MODO OSCURO
+===================================================== */
+
+body.dark-mode .tarjeta-puntos {
+    background: #292929;
+}
+
+body.dark-mode .puntos-info small,
+body.dark-mode .puntos-opcion span {
+    color: #fff;
+}
+
+
+body.dark-mode .puntos-opcion {
+    background: #292929;
+    border-color: var(--verde-flecha);
+}
+
+
+body.dark-mode .puntos-opcion .flecha-opcion {
+    color: var(--verde-flecha);
+}
+
+body.dark-mode .boton-recargar{
+    background: #292929;
+}
+body.dark-mode .boton-usar{
+    background: #292929;
+}
+
+
+/* TARJETAS */
+.tarjeta-recarga,
+.tarjeta-saldo {
+    border: 2px solid var(--verde-flecha);
+    border-radius: 30px;
+    padding: 20px 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* SALDO */
+.tarjeta-saldo .fila-puntos {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.tarjeta-saldo .icono-opcion {
+    color: var(--verde-flecha);
+    font-size: 25px;
+    margin-top: -10px;
+}
+
+.tarjeta-saldo .puntos-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.tarjeta-saldo .puntos-encabezado span {
+    color: var(--verde-flecha);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tarjeta-saldo .puntos-encabezado strong {
+    color: var(--rojo-flecha);
+    font-size: 20px;
+
+}
+
+.tarjeta-saldo .puntos-info {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.tarjeta-saldo .puntos-info i {
+    color: var(--rojo-flecha);
+    font-size: 20px;
+}
+
+.tarjeta-saldo .puntos-info small {
+    color: black;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+
+/* RECARGAR AHORA */
+.recarga-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.titulo-recarga {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.titulo-recarga i {
+    color: var(--verde-flecha);
+    font-size: 25px;
+}
+
+.titulo-recarga span {
+    color: var(--verde-flecha);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* TARJETAS VISA */
+.tarjetas-aceptadas {
+    text-align: right;
+}
+
+.logos-tarjetas {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+/* FECHA + CVV */
+.fila-campos {
+    display: flex;
+    gap: 15px;
+}
+
+
+
+

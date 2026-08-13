@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>puntosf</title>
+    <title>recargartarjeta</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -35,124 +35,160 @@
         </header>
 
 
-<h2>Mis puntos Flechamigo</h2>
+<h2>Recarga tu tarjeta</h2>
 
 <main class="contenedor-contacto">
 
     <section class="contacto">
 
-        <section class="tarjeta-acerca tarjeta-puntos">
+        <section class="tarjeta-acerca tarjeta-puntos tarjeta-saldo">
 
-        <div class="fila-acerca fila-puntos">
+            <div class="fila-acerca fila-puntos">
 
-            <i class="fa-solid fa-award icono-opcion"></i>
+                <i class="fa-solid fa-money-bill-transfer icono-opcion"></i>
 
-            <div class="texto-acerca-fila">
+                <div class="texto-acerca-fila">
 
-                <div class="puntos-encabezado">
-                    <span>Mis puntos:</span>
+                    <div class="puntos-encabezado">
 
-                    <strong>
-                        Tienes: 0 puntos
-                    </strong>
-                </div>
+                        <span>
+                            Saldo en tarjeta
+                        </span>
 
-                <div class="puntos-info">
+                        <strong>
+                            $300
+                        </strong>
 
-                    <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
 
-                    <small>
-                        Puedes obtener más puntos, comprando tus
-                        boletos en nuestra aplicación o sucursales
-                    </small>
+                    <div class="puntos-info">
+
+                        <i class="fa-solid fa-circle-exclamation"></i>
+
+                        <small>
+                            Recarga tu tarjeta desde cualquier punto
+                            de venta autorizado.
+                        </small>
+
+                    </div>
 
                 </div>
 
             </div>
 
-
-            <!-- Imagen del Flechabus -->
-            <img
-                src="img/tarjetaFa.png"
-                class="imagen-puntos"
-                alt="Flechabus"
-            >
-
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- =========================================
-         SALDO EN MI TARJETA
-    ========================================== -->
+        <!-- =====================================
+             RECARGAR AHORA
+        ====================================== -->
 
-    <section class="tarjeta-acerca tarjeta-puntos">
+        <section class="tarjeta-acerca tarjeta-puntos tarjeta-recarga">
 
-        <div class="fila-acerca fila-puntos">
+            <!-- Encabezado -->
 
-            <i class="fa-solid fa-circle-dollar-to-slot icono-opcion"></i>
+            <div class="recarga-encabezado">
 
-            <div class="texto-acerca-fila">
+                <div class="titulo-recarga">
 
-                <div class="puntos-encabezado">
+                    <i class="fa-solid fa-money-bill-transfer icono-opcion"></i>
 
                     <span>
-                        Saldo en mi tarjeta:
+                        Recargar ahora
                     </span>
-
-                    <strong>
-                        $300
-                    </strong>
 
                 </div>
 
 
-                <div class="puntos-info">
+                <!-- Tarjetas aceptadas -->
 
-                    <i class="fa-solid fa-circle-exclamation"></i>
+                <div class="tarjetas-aceptadas">
 
-                    <small>
-                        Puedes recargar tu tarjeta digital desde
-                        puntos de venta o digitalmente
-                    </small>
+                    <div class="logos-tarjetas">
+
+                        <img src="img/metpago.png " style="height: 22px;" alt="">
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
 
-    </section>
+            <!-- =================================
+                 NÚMERO DE TARJETA
+            ================================== -->
 
-    <!-- RECARGAR TARJETA -->
-<a href="recargartarjeta.html"
-   class="boton-recargar">
+            <div class="cajas">
 
-    <i class="fa-solid fa-money-bill-transfer"></i>
+                <input
+                    type="text"
+                    id="numeroTarjeta"
+                    placeholder="Número de tarjeta"
+                    maxlength="19"
+                >
 
-    <span>
-        Recargar tarjeta
-    </span>
-
-    <i class="fa-solid fa-chevron-right flecha-recargar"></i>
-
-</a>
+            </div>
 
 
-<!-- USAR TARJETA -->
-<a href="usartarjeta.html"
-   class="boton-usar">
+            <!-- =================================
+                 FECHA + CVV
+            ================================== -->
 
-    <i class="fa-regular fa-credit-card"></i>
+            <div class="fila-campos">
 
-    <span>
-        Usar tarjeta
-    </span>
+                <div class="cajas">
 
-    <i class="fa-solid fa-chevron-right flecha-usar"></i>
+                    <input
+                        type="text"
+                        id="fechaExpiracion"
+                        placeholder="Fecha de expiración"
+                        maxlength="5"
+                    >
+                </div>
 
-</a>
+
+                <div class="cajas">
+
+                    <input
+                        type="text"
+                        id="cvv"
+                        placeholder="CVV/CVC"
+                        maxlength="4"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 NOMBRE DEL TITULAR
+            ================================== -->
+
+            <div class="cajas">
+
+                <input
+                    type="text"
+                    id="nombreTitular"
+                    placeholder="Nombre del titular de tarjeta"
+                >
+
+            </div>
+
+
+            <!-- =================================
+                 BOTÓN RECARGAR
+            ================================== -->
+
+            <button
+                type="button"
+                class="btn-estilo"
+            >
+                Recargar
+            </button>
+
+        </section>
 
  </section>
 
