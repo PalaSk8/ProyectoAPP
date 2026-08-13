@@ -864,21 +864,6 @@ h2{
         PÁGINA COMPRA (¿A DÓNDE VIAJAS?)
 =========================================================*/
 
-.contenido {
-    padding: 12px 16px 24px;  /* bajamos de 110px a 24px */
-    max-width: 480px;
-    margin: 0 auto;
-}
-
-.titulo-pregunta {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--verde-flecha);
-    margin-top: 4px;      
-    margin-bottom: 12px;  /* antes 24px */
-    text-align: center;
-}
-
 /* ===== TARJETA Origen / Destino ===== */
 .campos-viaje {
     display: flex;
@@ -893,7 +878,7 @@ h2{
     flex-direction: column;
     background: #fff;
     border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(11, 122, 83, 0.15);
+    box-shadow: 0 8px 20px var(--verde-flecha) (11, 122, 83, 0.15);
     position: relative;
     /*sin overflow: hidden */
 }
@@ -994,14 +979,14 @@ h2{
 /* ===== Fechas ===== */
 .label-seccion {
     font-weight: 700;
-    color: var(--verde-flecha);
+    color: var(--rojo-flecha);
     margin-bottom: 12px;
     font-size: 0.95rem;
 }
 
 .fechas {
     display: flex;
-    gap: 50px;
+    gap: 8px;
     margin-bottom: 26px;
 }
 
@@ -1010,18 +995,20 @@ h2{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 5px;
     padding: 14px 8px;
     border-radius: 14px;
     border: none;
-    background: #fff;
+    background: #ffffff;
     color: var(--verde-flecha);
-    font-size: 0.82rem;
     font-weight: 700;
-    cursor: pointer;
     box-shadow: 0 4px 12px rgba(11, 122, 83, 0.12);
     transition: all 0.25s ease;
     white-space: nowrap;
+}
+
+body.dark-mode .fecha-btn{
+    background: black;
 }
 
 .fecha-btn i {
@@ -1041,7 +1028,7 @@ h2{
 .fecha-btn.seleccionada {
     background: linear-gradient(135deg, var(--verde-flecha), var(--verde-flecha-oscuro));
     color: #fff;
-    box-shadow: 0 6px 14px rgba(11, 122, 83, 0.35);
+    box-shadow: 0 6px 14px var(--verde-flecha) (11, 122, 83, 0.35);
 }
 
 /* ===== Pasajeros ===== */
@@ -1063,9 +1050,15 @@ h2{
     border-bottom: none;
 }
 
+body.dark-mode .pasajero-fila{
+    background: black;
+}
+
+
+
 .pasajero-label {
     font-weight: 700;
-    color: #333;
+    color:var(--verde-flecha);
     font-size: 0.95rem;
 }
 
@@ -1076,7 +1069,7 @@ h2{
     background: linear-gradient(135deg, var(--verde-flecha), var(--verde-flecha-oscuro));
     border-radius: 10px;
     padding: 7px 12px;
-    box-shadow: 0 4px 10px rgba(11, 122, 83, 0.3);
+    box-shadow: 0 4px 10px var(--verde-flecha) (11, 122, 83, 0.3);
 }
 
 .contador-btn {
@@ -1102,29 +1095,7 @@ h2{
     font-weight: 700;
     min-width: 16px;
     text-align: center;
-    font-size: 1rem;
 }
-
-/* ===== Botón Buscar ===== */
-.btn-buscar {
-    width: 100%;
-    padding: 18px;
-    border: none;
-    border-radius: 14px;
-    background: linear-gradient(135deg, var(--rojo-flecha), var(--rojo-flecha-oscuro));
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    box-shadow: 0 10px 24px rgba(255, 49, 49, 0.4);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.btn-buscar:active {
-    transform: translateY(2px) scale(0.99);
-    box-shadow: 0 6px 14px rgba(255, 49, 49, 0.35);
-}
-
 
 /* --- Stepper con camión --- */
 .stepper {
@@ -1158,8 +1129,8 @@ h2{
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: var(--gris-borde);
-    border: 2px solid #fff;
+    background: var(--rojo-flecha);
+    border: 2px solid var(--gris-borde);
 }
 
 .stepper-punto.activo,
@@ -1203,6 +1174,14 @@ h2{
     display: none;
 }
 
+body.dark-mode .lista-destinos{
+    background: black;
+}
+
+body.dark-mode .lista-fechas{
+    background: black;
+}
+
 .lista-destinos.visible,
 .lista-fechas.visible {
     display: block;
@@ -1212,8 +1191,14 @@ h2{
 .lista-fechas li {
     padding: 10px 16px;
     font-size: 0.92rem;
-    color: #333;
-    cursor: pointer;
+    color: black;
+}
+
+body.dark-mode .lista-destinos li{
+    color: white;
+}
+body.dark-mode .lista-fechas li{
+    color: white;
 }
 
 .lista-destinos li:hover,
@@ -1230,15 +1215,10 @@ h2{
         PÁGINA COMPRA2 (DETALLE DEL VIAJE)
 =========================================================*/
 
-.titulo-italic {
-    font-style: italic;
-}
 
 /* ===== Mini stepper "Viaje de ida / Fecha" ===== */
-
-
 .ruta-texto {
-    color: #777;
+    color: black;
     font-size: 0.85rem;
     margin: 0 0 12px;
 }
@@ -1248,11 +1228,15 @@ h2{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #eceafc;
-    border: 1.5px solid #b9aef0;
+    background: white;
+    border: 1.5px solid var(--verde-flecha);
     border-radius: 14px;
     padding: 14px 8px;
     margin-bottom: 24px;
+}
+
+body.dark-mode .resumen-viaje{
+    background: black;
 }
 
 .resumen-item {
@@ -1266,7 +1250,7 @@ h2{
 
 .resumen-label {
     font-size: 0.72rem;
-    color: #6a5fa8;
+    color: var(--verde-flecha);
     margin-bottom: 4px;
     font-weight: 600;
 }
@@ -1274,22 +1258,21 @@ h2{
 .resumen-valor {
     font-size: 0.92rem;
     font-weight: 700;
-    color: #333;
+    color: var(--rojo-flecha);
     display: flex;
     align-items: center;
     gap: 4px;
-    cursor: pointer;
 }
 
 .resumen-valor i {
     font-size: 0.7rem;
-    color: #6a5fa8;
+    color: var(--verde-flecha-oscuro);
 }
 
 .resumen-divisor {
     width: 1px;
     height: 30px;
-    background: #b9aef0;
+    background: var(--verde-flecha-oscuro);
 }
 
 .lista-horas-resumen {
@@ -1310,6 +1293,11 @@ h2{
     box-shadow: 0 4px 14px rgba(0,0,0,0.06);
     padding: 22px 16px;
     margin-bottom: 24px;
+    border: 1px solid var(--verde-flecha);
+}
+
+body.dark-mode .itinerario{
+    background: black;
 }
 
 .itinerario-duracion {
@@ -1377,7 +1365,7 @@ h2{
 
 .lugar-label {
     font-size: 0.88rem;
-    color: #333;
+    color: var(--rojo-flecha);
     font-weight: 600;
 }
 
@@ -1409,7 +1397,7 @@ h2{
 
 .servicio-item span {
     font-size: 0.75rem;
-    color: #555;
+    color: var(--verde-flecha);
     font-weight: 600;
 }
 
@@ -1422,32 +1410,6 @@ h2{
 /*=========================================================
         PÁGINA COMPRAS3 (PAGO)
 =========================================================*/
-
-.metodos-pago {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.metodos-pago i {
-    font-size: 2.2rem;
-    color: #555;
-}
-
-.fila-doble {
-    display: flex;
-    gap: 10px;
-}
-
-.fila-doble .cajas {
-    flex: 1;
-}
-
-.caja-cvv {
-    flex: 0 0 40%;
-}
-
 .btn-cancelar {
     width: 100%;
     padding: 12px;
@@ -1465,6 +1427,7 @@ h2{
 .btn-cancelar:active {
     transform: scale(0.98);
 }
+
 /*=========================================================
         PÁGINA COMPRAS4 (DETALLES DE COMPRA)
 =========================================================*/
@@ -1488,7 +1451,7 @@ h2{
     align-items: center;
     gap: 6px;
     font-weight: 700;
-    color: #333;
+    color: var(--verde-flecha);
     font-size: 0.9rem;
     width: 90px;          /* ancho fijo: ambos círculos quedan alineados igual */
     flex-shrink: 0;
@@ -1524,8 +1487,12 @@ h2{
     margin-bottom: 20px;
 }
 
+body.dark-mode .detalle-compra{
+    background: black;
+}
+
 .detalle-fila-titulo {
-    color: #777;
+    color: var(--verde-flecha);
     font-size: 0.8rem;
     margin: 0 0 4px;
 }
@@ -1536,6 +1503,10 @@ h2{
     font-weight: 700;
     color: #333;
     margin-bottom: 14px;
+}
+
+body.dark-mode .detalle-fila{
+    color: var(--verde-flecha);
 }
 
 .detalle-fila-simple {
@@ -1571,7 +1542,7 @@ h2{
 
 .detalle-nota {
     font-size: 0.78rem;
-    color: #888;
+    color: var(--verde-flecha);
     line-height: 1.4;
     margin: 0;
 }
@@ -1585,7 +1556,7 @@ h2{
 
 .detalle-instruccion {
     text-align: center;
-    color: #555;
+    color: var(--rojo-flecha);
     font-size: 0.88rem;
     margin-bottom: 18px;
 }
@@ -3056,11 +3027,15 @@ body.dark-mode .opcion-idioma:has(input:checked) {
 }
 /* ===== Caja de puntos Flechamigo ===== */
 .caja-puntos {
-    background: #eaf7f0;
-    border: 1.5px solid #b7e4cb;
+    background: white;
+    border: 1.5px solid var(--verde-flecha);
     border-radius: 14px;
     padding: 14px 16px;
     margin-bottom: 20px;
+}
+
+body.dark-mode .caja-puntos{
+    background: black;
 }
 
 .puntos-fila {
@@ -3068,7 +3043,7 @@ body.dark-mode .opcion-idioma:has(input:checked) {
     align-items: center;
     gap: 10px;
     font-size: 0.9rem;
-    color: #333;
+    color: var(--rojo-flecha);
     margin-bottom: 10px;
 }
 
@@ -3105,8 +3080,9 @@ body.dark-mode .opcion-idioma:has(input:checked) {
 /* ===== Tarjetas de método de pago ===== */
 .metodos-pago {
     display: flex;
-    gap: 12px;
+    gap: 5px;
     margin-bottom: 24px;
+    overflow: hidden;
 }
 
 .metodo-card {
@@ -3116,9 +3092,11 @@ body.dark-mode .opcion-idioma:has(input:checked) {
     border-radius: 16px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     padding: 16px;
-    cursor: pointer;
     transition: all 0.25s ease;
     border: 2px solid transparent;
+    flex: 1 1 0;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .metodo-card:active {
@@ -3164,7 +3142,7 @@ body.dark-mode .opcion-idioma:has(input:checked) {
 
 .metodo-logos {
     display: flex;
-    gap: 8px;
+    gap: 5px;
     margin-bottom: 14px;
 }
 
@@ -3185,14 +3163,14 @@ body.dark-mode .opcion-idioma:has(input:checked) {
     padding: 14px 12px;
     border-radius: 10px;
     margin-bottom: 14px;
-    text-decoration: underline;
+    text-decoration: none;
     text-decoration-color: rgba(255,255,255,0.4);
 }
 
 .metodo-info {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: rgba(0,0,0,0.04);
     border-radius: 10px;
     padding: 10px 12px;
@@ -3213,7 +3191,7 @@ body.dark-mode .opcion-idioma:has(input:checked) {
 
 .metodo-info strong {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #333;
 }
 
@@ -3222,7 +3200,7 @@ body.dark-mode .opcion-idioma:has(input:checked) {
 }
 
 .metodo-info span {
-    font-size: 0.72rem;
+    font-size: 0.62rem;
     color: #777;
 }
 
