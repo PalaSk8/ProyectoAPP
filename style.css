@@ -3962,3 +3962,143 @@ body.dark-mode .boton-usar{
 
 
 
+
+/*=========================================================
+        TUTORIAL
+=========================================================*/
+
+.contenido-tutorial {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 90px); /* resta la altura del header */
+}
+
+.tutorial-slide {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+}
+
+.tutorial-slide.activo {
+    display: flex;
+    animation: fadeInTutorial 0.35s ease;
+}
+
+@keyframes fadeInTutorial {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tutorial-titulo {
+    color: var(--rojo-flecha);
+    font-style: italic;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.tutorial-intro {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.tutorial-texto {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.tutorial-imagen {
+    background: #f5f5f5;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    padding: 10px;
+    margin: 0 auto 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.tutorial-imagen img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 52vh; /* la imagen ocupa buena parte de la pantalla */
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.tutorial-descripcion {
+    color: #333;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 0 10px;
+    margin-bottom: 24px;
+}
+
+/* Indicadores de progreso (puntos abajo del texto) */
+.tutorial-puntos {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.tutorial-punto {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gris-borde);
+    transition: all 0.25s ease;
+}
+
+.tutorial-punto.activo {
+    background: var(--rojo-flecha);
+    width: 22px;
+    border-radius: 4px;
+}
+
+/* Botones Omitir / Siguiente */
+.tutorial-botones {
+    display: flex;
+    gap: 10px;
+}
+
+.tutorial-botones button {
+    flex: 1;
+    margin-top: 0;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.tutorial-botones button:active {
+    transform: scale(0.97);
+}
+
+/* Omitir: contorno rojo */
+.tutorial-botones #btnOmitirTutorial {
+    background: #fff;
+    border: 2px solid var(--rojo-flecha);
+    color: var(--rojo-flecha);
+}
+
+/* Siguiente: rojo sólido, como el resto de la app */
+.tutorial-botones #btnSiguienteTutorial {
+    background: linear-gradient(135deg, var(--rojo-flecha), var(--rojo-flecha-oscuro));
+    border: none;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(255,49,49,0.35);
+}
