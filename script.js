@@ -818,6 +818,8 @@ function mostrarViajes(tipo) {
     const btnProximos = document.getElementById("btnProximos");
     const btnFinalizados = document.getElementById("btnFinalizados");
 
+    if (!proximos || !finalizados || !btnProximos || !btnFinalizados) return;
+
     if (tipo === "proximos") {
         proximos.style.display = "block";
         finalizados.style.display = "none";
@@ -834,6 +836,48 @@ function mostrarViajes(tipo) {
     }
 }
 
-/* Al cargar la página mostramos Próximos */
+/* Al cargar la página mostramos Próximos (solo si existen los elementos) */
+if (document.getElementById("proximos")) {
+    mostrarViajes("proximos");
+}
 
-mostrarViajes("proximos");
+/* =====================================================
+   TUTORIAL (tutorial.html)
+===================================================== */
+const tutorialSlides = document.querySelectorAll('.tutorial-slide');
+const tutorialPuntos = document.querySelectorAll('.tutorial-punto');
+const btnSiguienteTutorial = document.getElementById('btnSiguienteTutorial');
+const btnOmitirTutorial = document.getElementById('btnOmitirTutorial');
+
+if (tutorialSlides.length > 0) {
+    let pasoTutorialActual = 1;
+    const totalPasosTutorial = tutorialSlides.length;
+
+    function mostrarPasoTutorial(numero) {
+        tutorialSlides.forEach(slide => {
+            slide.classList.toggle('activo', parseInt(slide.dataset.paso) === numero);
+        });
+
+        tutorialPuntos.forEach(punto => {
+            punto.classList.toggle('activo', parseInt(punto.dataset.punto) === numero);
+        });
+
+        btnSiguienteTutorial.textContent = (numero === totalPasosTutorial) ? "Comenzar" : "Siguiente";
+    }
+
+    btnSiguienteTutorial.addEventListener('click', () => {
+        if (pasoTutorialActual < totalPasosTutorial) {
+            pasoTutorialActual++;
+            mostrarPasoTutorial(pasoTutorialActual);
+        } else {
+            // Último paso: mandamos al flujo real de compra
+            window.location.href = 'comprasr.html';
+        }
+    });
+
+    if (btnOmitirTutorial) {
+        btnOmitirTutorial.addEventListener('click', () => {
+            window.location.href = 'comprasr.html';
+        });
+    }
+}
