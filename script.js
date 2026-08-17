@@ -849,35 +849,67 @@ const tutorialPuntos = document.querySelectorAll('.tutorial-punto');
 const btnSiguienteTutorial = document.getElementById('btnSiguienteTutorial');
 const btnOmitirTutorial = document.getElementById('btnOmitirTutorial');
 
+const esTutorialSinRegistro = window.location.pathname.includes('tutorialsr.html');
+
 if (tutorialSlides.length > 0) {
+
     let pasoTutorialActual = 1;
     const totalPasosTutorial = tutorialSlides.length;
 
     function mostrarPasoTutorial(numero) {
+
         tutorialSlides.forEach(slide => {
-            slide.classList.toggle('activo', parseInt(slide.dataset.paso) === numero);
+            slide.classList.toggle(
+                'activo',
+                parseInt(slide.dataset.paso) === numero
+            );
         });
 
         tutorialPuntos.forEach(punto => {
-            punto.classList.toggle('activo', parseInt(punto.dataset.punto) === numero);
+            punto.classList.toggle(
+                'activo',
+                parseInt(punto.dataset.punto) === numero
+            );
         });
 
-        btnSiguienteTutorial.textContent = (numero === totalPasosTutorial) ? "Comenzar" : "Siguiente";
+        btnSiguienteTutorial.textContent =
+            (numero === totalPasosTutorial)
+                ? "Comenzar"
+                : "Siguiente";
     }
 
     btnSiguienteTutorial.addEventListener('click', () => {
+
         if (pasoTutorialActual < totalPasosTutorial) {
+
             pasoTutorialActual++;
             mostrarPasoTutorial(pasoTutorialActual);
+
         } else {
-            // Último paso: mandamos al flujo real de compra
-            window.location.href = 'comprasr.html';
+
+            if (esTutorialSinRegistro) {
+                // Sin registro
+                window.location.href = 'comprasr.html';
+            } else {
+                // Con registro
+                window.location.href = 'compra.html';
+            }
+
         }
     });
 
     if (btnOmitirTutorial) {
+
         btnOmitirTutorial.addEventListener('click', () => {
-            window.location.href = 'comprasr.html';
+
+            if (esTutorialSinRegistro) {
+                // Sin registro
+                window.location.href = 'comprasr.html';
+            } else {
+                // Con registro
+                window.location.href = 'compra.html';
+            }
+
         });
     }
 }
