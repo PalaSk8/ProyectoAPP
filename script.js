@@ -13,12 +13,10 @@ function mostrarPromo(enlace){
    MODO OSCURO
 ===================================================== */
 const switchDark = document.querySelector("#darkMode");
-const logo = document.getElementById("logo");
 
 if (localStorage.getItem("modo") === "oscuro") {
     document.body.classList.add("dark-mode");
     if (switchDark) switchDark.checked = true;
-    if (logo) logo.src = "img/logo negro.png";
 } else {
     if (logo) logo.src = "img/logo blanco.png";
 }
@@ -27,10 +25,8 @@ if (switchDark) {
     switchDark.addEventListener("change", () => {
         document.body.classList.toggle("dark-mode");
         if (document.body.classList.contains("dark-mode")) {
-            if (logo) logo.src = "img/logo negro.png";
             localStorage.setItem("modo", "oscuro");
         } else {
-            if (logo) logo.src = "img/logo blanco.png";
             localStorage.setItem("modo", "claro");
         }
     });
