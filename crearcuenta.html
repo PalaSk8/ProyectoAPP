@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crearcuenta</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- header con logo al centro y flecha de retroceso -->
+<body>
+        <header class="header">
+            <a href="inicio.html"><i style="color: white;" class="fa-solid fa-chevron-left"></i></a>
+
+            <div class="logo">
+                <img id="logo" src="img/logo blanco.png" alt="Logo">
+            </div>
+        </header>
+    
+  <!-- Título principal -->
+            <h2>Crea tu cuenta</h2>
+
+ <!-- ==========================================
+         CONTENEDOR PRINCIPAL
+    =========================================== -->
+
+    <main class="contenedor-crearcuenta">
+
+        <section class="crearcuenta">
+
+            <form>
+
+                <!-- ======================
+                     INFORMACIÓN PERSONAL
+                ======================= -->
+
+                <h3>Información personal</h3>
+
+                <div class="cajas">
+                    <input type="text" placeholder="Nombre">
+                </div>
+
+                <div class="cajas">
+                    <input type="text" placeholder="Apellido">
+                </div>
+
+                <div class="cajas">
+                    <input type="date">
+                </div>
+
+                <!-- ======================
+                     INFORMACIÓN DE CONTACTO
+                ======================= -->
+
+                <h3>Información de contacto</h3>
+
+                <div class="cajas">
+                    <input type="email" placeholder="Correo electrónico">
+                </div>
+
+                <div class="cajas">
+                    <input type="tel" placeholder="Celular">
+                </div>
+
+                <!-- ======================
+                     CONTRASEÑA
+                ======================= -->
+
+                <h3>Contraseña</h3>
+
+                <div class="cajas">
+                    <input type="password" placeholder="Contraseña">
+                </div>
+
+                <div class="cajas">
+                    <input type="password" placeholder="Confirmar contraseña">
+                </div>
+
+                <!-- ======================
+                     TÉRMINOS Y CONDICIONES
+                ======================= -->
+
+                <div class="opcion-check">
+
+                    <label>
+                        <input type="checkbox">
+                        Acepto términos y condiciones
+                    </label>
+
+                </div>
+
+                <!-- ======================
+                     POLÍTICAS DE PRIVACIDAD
+                ======================= -->
+
+                <div class="opcion-check">
+
+                    <label>
+                        <input type="checkbox">
+                        Acepto políticas de privacidad
+                    </label>
+
+                </div>
+
+                <!-- Botón para registrar la cuenta -->
+
+                <button class="btn-estilo" type="submit">
+                    Crear Cuenta
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- Imagen decorativa flechibus -->
+
+    <div class="fbus">
+        <img src="img/fbus_cc.png" alt="Bus">
+    </div>
+
+</body>
+
+<script src="script.js"></script>
+</html>
