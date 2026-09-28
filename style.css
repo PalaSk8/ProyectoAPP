@@ -455,6 +455,12 @@ body.menu-abierto {
     z-index:2;
 }
 
+/* Cuando la flecha está deshabilitada */
+.header .fa-chevron-left.deshabilitado {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
 .header a{
     left: -58px;
 }

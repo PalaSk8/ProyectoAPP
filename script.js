@@ -105,6 +105,78 @@ navItems.forEach(item => {
 });
 
 /* =====================================================
+    Botón de retroceso global para todas las entradas de este botón
+    de esta forma al presionar el back redirigimos hacia lo último que hizo el usuario y no a una ventana específica
+    Para volver atrás se hace una pila que registra en qué parte de las ventanas estuvo el usuario, existen 3 ventanas
+    que cierran flujo y reinician la pila para no volver hacia atrás
+======================================================== */
+
+(function registrarPaginaActual(){
+
+    const paginaActual = window.location.pathname.split('/').pop() || 'index.html';
+
+    const paginasRaiz = [
+        'index.html',
+        'tutorial.html',
+        'tutorialsr.html'
+    ];
+
+    if (paginasRaiz.includes(paginaActual)) {
+        sessionStorage.setItem('flechaRojaHistorial', JSON.stringify([paginaActual]));
+        return;
+    }
+
+    let pila = JSON.parse(sessionStorage.getItem('flecharojahist')) || [];
+    
+
+    if (pila[pila.length - 1] != paginaActual){
+        pila.push(paginaActual);
+        sessionStorage.setItem('flecharojahist', JSON.stringify(pila));
+    }
+
+}) ();
+
+const botonAtras = document.querySelector('.header .fa-chevron-left');
+
+if (botonAtras) {
+    botonAtras.style.cursor = 'pointer'; /* */
+
+    const paginaActualAlCargar = window.location.pathname.split('/').pop() || 'index.html';
+    const paginasRaizAlCargar = ['index.html', 'tutorial.html', 'tutorialsr.html'];
+
+    if (paginasRaizAlCargar.includes(paginaActualAlCargar)) {
+        botonAtras.style.visibility = 'hidden';
+    }
+
+    botonAtras.addEventListener('click', () => {
+
+        const paginaActual = window.location.pathname.split('/').pop() || 'index.html';
+        const paginasRaiz = ['index.html', 'tutorial.html', 'tutorialsr.html'];
+
+        if (paginasRaiz.includes(paginaActual)) {
+            return;
+        }
+
+        let pila = JSON.parse(sessionStorage.getItem('flecharojahist')) || [];
+
+        if (pila.length > 0) pila.pop();
+
+        const paginaAnterior = pila [pila.length - 1];
+
+        if (paginaAnterior) {
+            sessionStorage.setItem('flecharojahist', JSON.stringify(pila));
+            window.location.href = paginaAnterior;
+        } else {
+
+            const ruta = window.location.pathname.toLowerCase();
+            const esSinRegistro = ruta.includes('sr.html') || ruta.endsWith('sr');
+
+            window.location.href = esSinRegistro ? 'comprasr.html' : 'compra.html';
+        }
+    });
+}
+
+/* =====================================================
    MODALES DE MI PERFIL
 ===================================================== */
 const modalEditar = document.getElementById("modalEditar");
@@ -542,7 +614,7 @@ if (btnPagar) {
 
 if (btnCancelar) {
     btnCancelar.addEventListener('click', () => {
-        window.location.href = 'compras2.html';
+        window.location.replace('compras2.html');
     });
 }
 
@@ -583,7 +655,9 @@ if (detalleCompraEl) {
     if (btnVolverInicio) {
         btnVolverInicio.addEventListener('click', () => {
             localStorage.removeItem('flechaRojaCompra');
-            window.location.href = 'comprasr.html';
+            // replace: no deja rastro en el historial para que el usuario no pueda volver al paso 4 de compra si ya terminó
+            // este flujo
+            window.location.replace('comprasr.html');
         });
     }
 }
@@ -794,7 +868,7 @@ if (btnPagarUser) {
 
 if (btnCancelarUser) {
     btnCancelarUser.addEventListener('click', () => {
-        window.location.href = 'compra2.html';
+        window.location.replace('compra2.html');
     });
 }
 
@@ -802,7 +876,9 @@ const btnVolverInicio = document.getElementById('btnVolverInicio');
 if (btnVolverInicio) {
     btnVolverInicio.addEventListener('click', () => {
         localStorage.removeItem('flechaRojaCompra');
-        window.location.href = 'compra.html';
+        // replace: no deja rastro en el historial para que el usuario no pueda volver al paso 4 de compra si ya terminó
+        // este flujo
+        window.location.replace('compra.html');
     });
 }
 
